@@ -235,6 +235,18 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 .jump a:hover, .jump a:focus-visible { color: var(--sticker); border-color: var(--line); background: var(--sleeve); }
 .jump a.on { color: var(--sticker); border-color: var(--blood); }
+.screen { position: relative; max-width: 960px; aspect-ratio: 16 / 9; background: #000; box-shadow: 0 0 0 6px #0b0807, 0 0 0 7px var(--blood), 0 18px 40px rgba(0,0,0,0.7), 0 0 60px rgba(158,27,22,0.35); }
+.screen video, .screen-play { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.screen video { object-fit: contain; background: #000; }
+.screen-play { padding: 0; border: 0; background: #000; cursor: inherit; overflow: hidden; }
+.screen-play img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.75); transition: filter .2s ease, transform .4s ease; }
+.screen-play:hover img, .screen-play:focus-visible img { filter: brightness(0.95); transform: scale(1.02); }
+.play-btn { position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: var(--blood); box-shadow: 0 0 0 4px rgba(236,226,207,0.85), 0 0 40px rgba(200,30,22,0.7); }
+.play-btn::after { content: ""; position: absolute; left: 36px; top: 28px; border-style: solid; border-width: 18px 0 18px 30px; border-color: transparent transparent transparent var(--bone); }
+.play-label { position: absolute; left: 16px; bottom: 14px; font-family: var(--f-head); font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--bone); text-shadow: 2px 2px 0 var(--blood), 0 2px 10px rgba(0,0,0,0.9); }
+.play-label .dur { font-family: var(--f-mono); font-size: 0.8rem; color: var(--sticker); margin-left: 8px; letter-spacing: 0.08em; }
+@media (max-width: 600px) { .play-btn { width: 68px; height: 68px; margin: -34px 0 0 -34px; } .play-btn::after { left: 27px; top: 21px; border-width: 13px 0 13px 22px; } .play-label { font-size: 1.05rem; } }
+@media (prefers-reduced-motion: reduce) { .screen-play img { transition: none; } }
 @keyframes stamp { 0% { transform: rotate(-12deg) scale(1.9); opacity: 0.4; } 100% { transform: rotate(-12deg) scale(1); opacity: 0.92; } }
 @media (prefers-reduced-motion: reduce) { .out-now { animation: none; } }
 .frow { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.86rem; line-height: 1.4; }
@@ -554,6 +566,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
   <div class="jump-inner">
     <span class="jump-label">Jump to</span>
     <a href="#about">The Show</a>
+    <a href="#trailer">Trailer</a>
     <a href="#hosts">Hosts</a>
     <a href="#format">How It Works</a>
     <a href="#episodes">Episodes</a>
@@ -613,6 +626,24 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
             <div class="row"><dt>Rated</dt><dd><span class="rating">R</span> for Ridiculous</dd></div>
           </dl>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trailer">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Now playing</span>
+        <h2>Watch the trailer</h2>
+        <p>Big J Millz and J-Rod step into the dark. 90 seconds, sound on.</p>
+      </div>
+      <div class="screen">
+        <video id="trailer-video" src="video/horror-freaks-trailer.mp4" poster="img/trailer-poster.jpg" preload="metadata" playsinline controls hidden></video>
+        <button type="button" class="screen-play" id="trailer-play" aria-label="Play the Horror Freaks trailer">
+          <img src="img/trailer-poster.jpg" alt="" width="854" height="480">
+          <span class="play-btn" aria-hidden="true"></span>
+          <span class="play-label">Play trailer <span class="dur">1:30</span></span>
+        </button>
       </div>
     </div>
   </section>
@@ -960,7 +991,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
   // Try right away; most browsers block this until the visitor interacts.
   start();
   function first(e) {
-    if (b.contains(e.target)) return;
+    if (b.contains(e.target) || (e.target.closest && e.target.closest('.screen'))) return;
     if (!played && !userPaused && a.paused) start();
     ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.removeEventListener(t, first, true); });
   }
@@ -1116,7 +1147,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
   }
   document.addEventListener('pointerdown', function (e) {
     if (e.button && e.button !== 0) return;
-    if (e.target.closest && e.target.closest('#deck')) return;
+    if (e.target.closest && e.target.closest('#deck, .screen')) return;
     slash(); mark(e.clientX, e.clientY);
   }, true);
 })();
@@ -1183,6 +1214,20 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+
+<script>
+(function () {
+  var v = document.getElementById('trailer-video'), b = document.getElementById('trailer-play');
+  if (!v || !b) return;
+  b.addEventListener('click', function () {
+    b.hidden = true; v.hidden = false;
+    var song = document.getElementById('theme');
+    if (song && !song.paused) song.pause();
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  });
+  v.addEventListener('play', function () { var song = document.getElementById('theme'); if (song && !song.paused) song.pause(); });
 })();
 </script>
 </body>
