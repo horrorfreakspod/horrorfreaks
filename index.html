@@ -331,8 +331,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .host-body .in { color: var(--bone); font-family: var(--f-head); font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; font-size: 1.1em; }
 .faves { display: grid; gap: 8px; margin-top: 6px; padding-top: 14px; border-top: 1px dashed var(--line); }
 .faves ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.faves li.nope { text-decoration: line-through; text-decoration-color: var(--blood); text-decoration-thickness: 2px; color: var(--dust); border-style: dashed; }
-.faves-note { font-family: var(--f-mono); font-size: 0.75rem; color: var(--dust); }
+.faves li.nope { color: var(--dust); border-style: dashed; }
+.faves li.nope s { text-decoration-color: var(--blood); text-decoration-thickness: 2px; }
+.faves li.nope small { font-family: var(--f-mono); font-weight: 400; font-size: 0.7rem; text-transform: none; letter-spacing: 0; margin-left: 6px; }
 .faves li {
   font-family: var(--f-head); font-weight: 600; font-size: 1.02rem;
   text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
@@ -698,12 +699,11 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
               <span class="label">Favorite movies &amp; shows</span>
               <ul>
                 <li>The Halloween series</li>
-                <li class="nope">Except Halloween III</li>
+                <li class="nope">Except <s>Halloween III</s><small>(for obvious reasons, stinker)</small></li>
                 <li>Stranger Things</li>
                 <li>Dawn of the Dead</li>
                 <li>Terrifier</li>
               </ul>
-              <span class="faves-note">For obvious reasons. Stinker.</span>
             </div>
           </div>
         </article>
