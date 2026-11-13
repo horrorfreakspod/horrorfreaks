@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Horror Freaks: a weekly horror movie podcast with Big J Millz and J-Rod. One movie a week, start to finish, with behind-the-scenes stories and trivia.">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,-apple-system,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Horror Freaks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&family=Barlow+Condensed:wght@600;800&family=Libre+Franklin:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a late-night horror rental shelf — the page reads like a VHS sleeve, with tape-counter timestamps marking the episode run. Single deliberate dark look. */
+:root {
+  --ground: #120b0a;      /* basement black, warm */
+  --sleeve: #1d1210;      /* worn cardboard */
+  --sleeve-2: #2a1916;
+  --bone: #ece2cf;        /* text */
+  --dust: #a99a86;        /* secondary text */
+  --blood: #9e1b16;       /* dried, not neon */
+  --sticker: #e2b13c;     /* rental-store genre sticker */
+  --line: #3a2622;
+  --f-display: "Nosifer", "Creepster", Impact, fantasy;
+  --f-head: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --skulls: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22180%22%20height%3D%22180%22%20viewBox%3D%220%200%20180%20180%22%3E%3Cg%20fill%3D%22%23ece2cf%22%20fill-opacity%3D%220.05%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20transform%3D%22translate%2822%2024%29%20rotate%28-12%2020%2020%29%22%20d%3D%22M20%202C9%202%202%209.5%202%2019c0%206%203%2010%207%2012v6c0%201.5%201%202.5%202.5%202.5h17c1.5%200%202.5-1%202.5-2.5v-6c4-2%207-6%207-12C38%209.5%2031%202%2020%202Z%20M8.5%2020a4.5%205%200%201%200%209%200a4.5%205%200%201%200-9%200Z%20M22.5%2020a4.5%205%200%201%200%209%200a4.5%205%200%201%200-9%200Z%20M20%2025l-2.6%205h5.2Z%20M14.6%2034h.9v5.5h-.9Z%20M19.55%2034h.9v5.5h-.9Z%20M24.5%2034h.9v5.5h-.9Z%22/%3E%3Cpath%20transform%3D%22translate%28112%20106%29%20rotate%2810%2020%2020%29%20scale%280.8%29%22%20d%3D%22M20%202C9%202%202%209.5%202%2019c0%206%203%2010%207%2012v6c0%201.5%201%202.5%202.5%202.5h17c1.5%200%202.5-1%202.5-2.5v-6c4-2%207-6%207-12C38%209.5%2031%202%2020%202Z%20M8.5%2020a4.5%205%200%201%200%209%200a4.5%205%200%201%200-9%200Z%20M22.5%2020a4.5%205%200%201%200%209%200a4.5%205%200%201%200-9%200Z%20M20%2025l-2.6%205h5.2Z%20M14.6%2034h.9v5.5h-.9Z%20M19.55%2034h.9v5.5h-.9Z%20M24.5%2034h.9v5.5h-.9Z%22/%3E%3C/g%3E%3C/svg%3E");
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--skulls) 0 0 / 180px 180px, var(--ground);
+  color: var(--bone);
+  font-family: var(--f-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--sticker); }
+:focus-visible { outline: 2px solid var(--sticker); outline-offset: 3px; }
+
+.label {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dust);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(158,27,22,0.28), transparent 70%),
+    var(--skulls) 0 0 / 180px 180px,
+    var(--ground);
+}
+.hero::after { /* faint VHS scanlines */
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+}
+.hero .wrap {
+  position: relative;
+  z-index: 1;
+  padding-block: 56px 64px;
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+.topbar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+.rec { display: inline-flex; align-items: center; gap: 8px; }
+.rec::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--blood);
+  animation: blink 1.6s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.wordmark {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 10vw, 6.4rem);
+  line-height: 1.05;
+  color: var(--bone);
+  letter-spacing: 0.01em;
+}
+.wordmark span { display: block; color: var(--blood); text-shadow: 0 0 0.02em rgba(0,0,0,.6); }
+
+.tagline {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+  line-height: 1.25;
+  max-width: 34ch;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.hosted {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+  font-family: var(--f-head); font-weight: 800; font-size: 1.25rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.hosted .amp { color: var(--blood); font-size: 1.5rem; }
+
+.sticker {
+  display: inline-block;
+  background: var(--sticker);
+  color: #1b1208;
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 12px 5px;
+  transform: rotate(-3deg);
+  box-shadow: 2px 3px 0 rgba(0,0,0,0.45);
+}
+
+/* ---------- Sections ---------- */
+section { padding-block: 64px; border-bottom: 1px solid var(--line); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 62ch; }
+.sec-head h2 {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.sec-head p { color: var(--dust); }
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.about-grid p + p { margin-top: 16px; }
+.about-copy { font-size: 1.08rem; max-width: 60ch; }
+.feature {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border: 1px solid var(--blood);
+  background: var(--sleeve);
+}
+.feature .tape { border: 0; border-right: 1px solid var(--line); }
+.feat-info { padding: 14px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.feat-info dl { margin: 0; }
+.listen-ep { justify-self: start; max-width: 100%; font-size: 0.85rem; padding: 8px 12px 7px; margin-block: 4px 2px; }
+.out-now {
+  justify-self: start; align-self: end;
+  position: relative;
+  font-family: var(--f-head); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(2.1rem, 3.6vw, 2.6rem); line-height: 0.95; letter-spacing: 0.08em;
+  white-space: nowrap; text-align: center;
+  color: #e0352a;
+  padding: 10px 14px 7px;
+  border: 4px solid #e0352a;
+  outline: 2px solid #e0352a; outline-offset: 4px;
+  border-radius: 4px;
+  background: transparent;
+  transform: rotate(-12deg);
+  opacity: 0.92;
+  text-shadow: 0 0 1px #e0352a;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22120%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.85%22%20numOctaves%3D%222%22%20seed%3D%227%22/%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20-1.5%201.75%22/%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22120%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.85%22%20numOctaves%3D%222%22%20seed%3D%227%22/%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20-2.4%201.9%22/%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E");
+  -webkit-mask-size: 220px 120px; mask-size: 220px 120px;
+  animation: stamp .45s cubic-bezier(.2,1.6,.4,1) both;
+}
+.tape.cover > .out-now { position: absolute; left: 16px; bottom: 26px; transform-origin: left bottom; z-index: 2; }
+@media (max-width: 600px) { .tape.cover > .out-now { font-size: 1.7rem; bottom: 14px; left: auto; right: 22px; } }
+.feature.toxic { border-color: #5f9a16; }
+.feature.toxic .tape.next { border-right: 1px solid #3b5a14; }
+.feature.toxic .now-head { color: #9be23a; }
+.drops { justify-self: start; font-family: var(--f-head); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; color: #0d1405; background: #8fe02a; padding: 7px 12px 5px; box-shadow: 3px 3px 0 #2d5507, 0 0 18px rgba(143,224,42,0.35); font-variant-numeric: tabular-nums; }
+.out-now.stamp-toxic { color: #8fe02a; border-color: #8fe02a; outline-color: #8fe02a; text-shadow: 0 0 1px #8fe02a, 0 0 10px rgba(143,224,42,0.5); }
+.feature.toxic .tape.cover .t { text-shadow: 3px 3px 0 #2d5507, 0 0 16px rgba(134,214,31,0.55), 0 2px 10px rgba(0,0,0,0.85); }
+.vm { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; border: 1px solid var(--blood); background: var(--sleeve); padding: 14px; }
+.vm img { width: 140px; height: 140px; background: #fff; padding: 4px; display: block; }
+.vm-copy { display: grid; gap: 6px; min-width: 0; }
+.vm-copy strong { font-family: var(--f-head); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1; text-shadow: 2px 2px 0 var(--blood); }
+.vm-copy p { color: var(--dust); font-size: 0.9rem; }
+.vm-copy .btn { font-size: 0.9rem; padding: 8px 12px 7px; }
+@media (max-width: 480px) { .vm { grid-template-columns: minmax(0, 1fr); justify-items: start; } }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+section[id] { scroll-margin-top: calc(56px + env(safe-area-inset-top, 0px)); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 25; background: #0b0807; }
+.jump {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 25;
+  background: rgba(11, 8, 7, 0.94);
+  border-bottom: 1px solid var(--blood);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+}
+.jump-inner {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px;
+  display: flex; align-items: center; gap: 6px;
+  overflow-x: auto; scrollbar-width: none; white-space: nowrap;
+}
+.jump-inner::-webkit-scrollbar { display: none; }
+@media (max-width: 900px) { .jump-inner { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); } }
+.jump-label { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blood); margin-right: 6px; flex: none; }
+.jump a {
+  flex: none; text-decoration: none; color: var(--bone);
+  font-family: var(--f-head); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 6px 10px 5px; border: 1px solid transparent;
+}
+.jump a:hover, .jump a:focus-visible { color: var(--sticker); border-color: var(--line); background: var(--sleeve); }
+.jump a.on { color: var(--sticker); border-color: var(--blood); }
+@keyframes stamp { 0% { transform: rotate(-12deg) scale(1.9); opacity: 0.4; } 100% { transform: rotate(-12deg) scale(1); opacity: 0.92; } }
+@media (prefers-reduced-motion: reduce) { .out-now { animation: none; } }
+.frow { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.86rem; line-height: 1.4; }
+.frow:last-child { border-bottom: 0; }
+.frow dt { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dust); }
+.frow dd { margin: 0; }
+.cast { display: grid; gap: 3px; }
+.cast em { font-style: normal; color: var(--dust); }
+@media (max-width: 600px) {
+  .feature { grid-template-columns: minmax(0, 1fr); }
+  .feature .tape { aspect-ratio: 4 / 3; border-right: 0; border-bottom: 1px solid var(--line); }
+}
+.now-head { color: var(--sticker); }
+@media (max-width: 600px) { .spec .row { flex-direction: column; gap: 4px; } .spec .row dd { text-align: left; } }
+.spec {
+  background: var(--sleeve);
+  border: 1px solid var(--line);
+  padding: 22px 22px 18px;
+  display: grid;
+  gap: 0;
+}
+.spec .row {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--f-mono); font-size: 0.86rem;
+}
+.spec .row:last-child { border-bottom: 0; }
+.spec .row dt { color: var(--dust); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; padding-top: 2px; }
+.spec .row dd { margin: 0; text-align: right; }
+.spec dl { margin: 0; }
+.rating {
+  display: inline-block; border: 1.5px solid var(--bone); padding: 0 6px;
+  font-weight: 600; letter-spacing: 0.06em;
+}
+
+/* Hosts */
+.hosts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.host {
+  background: var(--sleeve);
+  border: 1px solid var(--line);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.host-plate {
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0 1px, transparent 1px 3px),
+    linear-gradient(160deg, var(--sleeve-2), #0d0807);
+  display: grid; place-items: center;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.host-plate .initials {
+  font-family: var(--f-display);
+  font-size: clamp(2.4rem, 8vw, 3.6rem);
+  color: var(--blood);
+}
+.host-plate .label { position: absolute; left: 14px; bottom: 10px; }
+.host-plate img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
+.host-plate.poster { place-items: stretch; }
+.host-plate.poster img { grid-area: 1 / 1; }
+.host-plate.poster img.fill { filter: blur(18px) brightness(0.45); transform: scale(1.15); }
+.host-plate.poster img.main { object-fit: contain; object-position: center; position: relative; }
+.host-body { padding: 22px; display: grid; gap: 10px; align-content: start; }
+.host-body h3 {
+  font-family: var(--f-head); font-weight: 800; font-size: 1.9rem;
+  text-transform: uppercase; letter-spacing: 0.03em; line-height: 1;
+}
+.host-body p { color: var(--dust); }
+.host-body .in { color: var(--bone); font-family: var(--f-head); font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; font-size: 1.1em; }
+.faves { display: grid; gap: 8px; margin-top: 6px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.faves ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.faves li.nope { text-decoration: line-through; text-decoration-color: var(--blood); text-decoration-thickness: 2px; color: var(--dust); border-style: dashed; }
+.faves-note { font-family: var(--f-mono); font-size: 0.75rem; color: var(--dust); }
+.faves li {
+  font-family: var(--f-head); font-weight: 600; font-size: 1.02rem;
+  text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
+  border: 1px solid var(--line); background: var(--sleeve-2); padding: 6px 10px 5px;
+}
+
+/* Episode format: tape counter run */
+.run { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.cue {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.counter {
+  font-family: var(--f-mono); font-weight: 600; font-size: 1.05rem;
+  color: var(--sticker); font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.cue h3 {
+  font-family: var(--f-head); font-weight: 800; font-size: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1;
+  margin-bottom: 4px;
+}
+.cue p { color: var(--dust); max-width: 62ch; }
+
+/* Shelf */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.tape {
+  aspect-ratio: 2 / 3;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--sleeve-2), var(--sleeve));
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 14px;
+  gap: 8px;
+}
+.tape .ep { font-family: var(--f-mono); font-size: 0.75rem; color: var(--dust); letter-spacing: 0.1em; text-transform: uppercase; }
+.tape .t {
+  align-self: center;
+  font-family: var(--f-head); font-weight: 800; font-size: 1.35rem;
+  text-transform: uppercase; line-height: 1.05; letter-spacing: 0.02em;
+}
+.tape .t small { display: block; font-family: var(--f-body); font-weight: 400; text-transform: none; font-size: 0.85rem; color: var(--dust); margin-top: 6px; letter-spacing: 0; }
+.tape.cover { position: relative; overflow: hidden; background: #0b0807; }
+.tape.cover > *:not(.splat) { position: relative; z-index: 1; }
+.tape.cover .splat { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.tape.cover .t { font-size: 1.9rem; color: #f3ece0; text-shadow: 0 2px 10px rgba(0,0,0,0.85); }
+.tape.cover .t small { color: #d6cbb8; text-shadow: 0 1px 6px rgba(0,0,0,0.9); }
+.tape.next { border-color: var(--blood); background: linear-gradient(180deg, #3a1411, var(--sleeve)); }
+.tape .tag { justify-self: start; }
+.tape .tag.dim { background: transparent; color: var(--dust); border: 1px dashed var(--line); box-shadow: none; transform: none; font-size: 0.75rem; padding: 4px 8px; }
+.tape .tag.small { font-size: 0.75rem; padding: 4px 8px; }
+.host-body .small-tag { font-size: 0.75rem; padding: 4px 8px; margin-top: 4px; }
+
+/* Listen */
+.listen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.platform {
+  border: 1px solid var(--line);
+  background: var(--sleeve);
+  padding: 18px;
+  display: grid; gap: 4px;
+}
+.social-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
+.platform.social { text-decoration: none; color: var(--bone); border-color: var(--blood); background: linear-gradient(180deg, #2c110f, var(--sleeve)); gap: 6px; transition: transform .15s ease, border-color .15s ease; }
+.platform.social:hover { transform: translateY(-2px); border-color: var(--sticker); }
+.platform.social strong { font-size: 1.6rem; overflow-wrap: anywhere; }
+.platform.social .go { color: var(--sticker); }
+@media (max-width: 600px) { .social-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .platform.social { transition: none; } }
+.platform strong { font-family: var(--f-head); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.platform span { font-family: var(--f-mono); font-size: 0.78rem; color: var(--dust); }
+
+footer { padding-block: 36px 48px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; align-items: baseline; }
+footer .fm { font-family: var(--f-display); font-size: 1.05rem; color: var(--blood); }
+
+.stickers { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; }
+.nsfw {
+  display: inline-grid;
+  justify-items: center;
+  background: #f3ece0;
+  color: #0e0908;
+  border: 3px solid #0e0908;
+  outline: 2px solid #f3ece0;
+  padding: 4px 10px 5px;
+  transform: rotate(4deg);
+  box-shadow: 3px 4px 0 rgba(0,0,0,0.5);
+  line-height: 1;
+}
+.nsfw-top, .nsfw-bot {
+  font-family: var(--f-head); font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.12em; font-size: 0.7rem;
+}
+.nsfw-big {
+  font-family: var(--f-head); font-weight: 800; font-size: 2.4rem;
+  letter-spacing: 0.04em; background: #0e0908; color: #f3ece0;
+  padding: 2px 10px 0; margin: 3px 0;
+}
+.nsfw-bot { color: var(--blood); }
+.fine {
+  font-family: var(--f-mono); font-size: 0.78rem; color: var(--dust);
+  max-width: 52ch; line-height: 1.5;
+}
+.deck {
+  position: fixed; z-index: 20;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: 10px;
+  max-width: calc(100vw - 32px);
+  background: #0b0807; color: var(--bone);
+  border: 1px solid var(--blood); box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  padding: 8px 14px 8px 10px; cursor: pointer; text-align: left;
+  font: inherit;
+}
+.deck:hover { border-color: var(--sticker); }
+.reels { display: flex; gap: 5px; background: var(--sleeve-2); padding: 5px 6px; border: 1px solid var(--line); }
+.reels i { width: 14px; height: 14px; border-radius: 50%; border: 2px dashed var(--dust); display: block; }
+.deck.on .reels i { border-color: var(--sticker); animation: spin 2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.deck-txt { display: grid; line-height: 1.2; min-width: 0; }
+.deck-state { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dust); }
+.deck.on .deck-state { color: var(--sticker); }
+.deck-song { font-family: var(--f-head); font-weight: 800; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+footer { padding-bottom: 96px; }
+@media (prefers-reduced-motion: reduce) { .deck.on .reels i { animation: none; } }
+html, body { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2256%22%20height%3D%2256%22%20viewBox%3D%220%200%2048%2048%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22st%22%20x1%3D%220%22%20y1%3D%22-4%22%20x2%3D%220%22%20y2%3D%225%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f4f6f7%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23c3c9cd%22/%3E%3Cstop%20offset%3D%22.8%22%20stop-color%3D%22%238d959b%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e9edef%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22bo%22%20x1%3D%220%22%20y1%3D%22-4.6%22%20x2%3D%220%22%20y2%3D%225.6%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%239aa1a6%22/%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23e2e6e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235d6469%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22wd%22%20x1%3D%220%22%20y1%3D%22-3.4%22%20x2%3D%220%22%20y2%3D%224%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237a4126%22/%3E%3Cstop%20offset%3D%22.4%22%20stop-color%3D%22%2355291a%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2326110a%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22bl%22%20cx%3D%22.35%22%20cy%3D%22.4%22%20r%3D%22.7%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d42318%22/%3E%3Cstop%20offset%3D%22.6%22%20stop-color%3D%22%239c120c%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235e0805%22/%3E%3C/radialGradient%3E%3ClinearGradient%20id%3D%22bd%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237a0c08%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23d12419%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%236a0a06%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg%20transform%3D%22translate%283%203%29%20rotate%2845%29%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M0%200%20Q3%20-3.6%208%20-4%20L34%20-4%20L34%205%20Q16%205.2%200%200%20Z%22%20fill%3D%22url%28%23st%29%22%20stroke%3D%22%23120808%22%20stroke-width%3D%22.7%22/%3E%3Cpath%20d%3D%22M1.2%200.35%20Q16%204.1%2033.6%204.25%20L33.6%204.8%20Q16%204.95%200.9%200.3%20Z%22%20fill%3D%22%23fbfcfc%22%20opacity%3D%22.85%22/%3E%3Cpath%20d%3D%22M8.5%20-3.3%20L33.5%20-3.3%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%22.55%22%20opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M0.7%200.15%20Q6%20-1.9%2014.5%20-1.1%20Q19.5%200.2%2017.6%202.6%20Q13.5%204.3%207.5%202.9%20Q3.2%201.9%200.7%200.15%20Z%22%20fill%3D%22url%28%23bl%29%22%20opacity%3D%22.95%22/%3E%3Cpath%20d%3D%22M17%201.5%20Q22%200.4%2026.5%201.9%20Q24%203.5%2019.5%203.6%20Z%22%20fill%3D%22%238f100b%22%20opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%2222.5%22%20cy%3D%22-1.8%22%20r%3D%22.75%22%20fill%3D%22%23a3140e%22/%3E%3Ccircle%20cx%3D%2225.6%22%20cy%3D%22-0.6%22%20r%3D%22.45%22%20fill%3D%22%23a3140e%22/%3E%3Ccircle%20cx%3D%2228.8%22%20cy%3D%22-2.4%22%20r%3D%22.55%22%20fill%3D%22%237d0d08%22/%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%22-2.6%22%20r%3D%22.5%22%20fill%3D%22%23b0160f%22/%3E%3Cpath%20d%3D%22M3%20-0.4%20Q8%20-1.6%2013%20-0.9%22%20stroke%3D%22%23ff6a5c%22%20stroke-width%3D%22.45%22%20fill%3D%22none%22%20opacity%3D%22.6%22/%3E%3Crect%20x%3D%2233.6%22%20y%3D%22-4.6%22%20width%3D%223.6%22%20height%3D%2210.2%22%20rx%3D%22.9%22%20fill%3D%22url%28%23bo%29%22%20stroke%3D%22%23120808%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2236.8%22%20y%3D%22-3.4%22%20width%3D%2221%22%20height%3D%227.4%22%20rx%3D%222.4%22%20fill%3D%22url%28%23wd%29%22%20stroke%3D%22%23120808%22%20stroke-width%3D%22.7%22/%3E%3Cpath%20d%3D%22M38.5%20-1.6%20Q46%20-2.4%2056%20-1.2%20M38.5%202.1%20Q47%201.3%2056%202.4%20M41%200.3%20Q48%20-0.2%2055%200.6%22%20stroke%3D%22%231c0b05%22%20stroke-width%3D%22.35%22%20fill%3D%22none%22%20opacity%3D%22.7%22/%3E%3Cg%20stroke%3D%22%232a2a2a%22%20stroke-width%3D%22.3%22%3E%3Ccircle%20cx%3D%2241.2%22%20cy%3D%22.3%22%20r%3D%221.15%22%20fill%3D%22%23d9d4cb%22/%3E%3Ccircle%20cx%3D%2247.2%22%20cy%3D%22.3%22%20r%3D%221.15%22%20fill%3D%22%23d9d4cb%22/%3E%3Ccircle%20cx%3D%2253.2%22%20cy%3D%22.3%22%20r%3D%221.15%22%20fill%3D%22%23d9d4cb%22/%3E%3C/g%3E%3Ccircle%20cx%3D%2240.8%22%20cy%3D%22-.1%22%20r%3D%22.4%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2246.8%22%20cy%3D%22-.1%22%20r%3D%22.4%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2252.8%22%20cy%3D%22-.1%22%20r%3D%22.4%22%20fill%3D%22%23fff%22/%3E%3Cpath%20d%3D%22M37.4%20-2.6%20Q39%20-3%2040.6%20-2.2%20Q39.6%20-1%2038%20-1.4%20Z%22%20fill%3D%22%237d0d08%22%20opacity%3D%22.9%22/%3E%3C/g%3E%3Cpath%20d%3D%22M7.210000000000001%2010.4%20L7.210000000000001%2018.6%20C7.210000000000001%2020.700000000000003%208.91%2020.700000000000003%208.91%2018.6%20L8.91%2010.4%20Z%22%20fill%3D%22url%28%23bd%29%22/%3E%3Cpath%20d%3D%22M10.23%2014.6%20L10.23%2019.2%20C10.23%2021.3%2011.629999999999999%2021.3%2011.629999999999999%2019.2%20L11.629999999999999%2014.6%20Z%22%20fill%3D%22url%28%23bd%29%22/%3E%3Cpath%20d%3D%22M13.26%2018.7%20L13.26%2024.9%20C13.26%2027.0%2014.819999999999999%2027.0%2014.819999999999999%2024.9%20L14.819999999999999%2018.7%20Z%22%20fill%3D%22url%28%23bd%29%22/%3E%3Ccircle%20cx%3D%228.06%22%20cy%3D%2223.4%22%20r%3D%221.05%22%20fill%3D%22%23b3170f%22/%3E%3Ccircle%20cx%3D%2214.04%22%20cy%3D%2229.4%22%20r%3D%22.8%22%20fill%3D%22%239c120c%22/%3E%3C/svg%3E") 4 4, auto; }
+a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2256%22%20height%3D%2256%22%20viewBox%3D%220%200%2048%2048%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22st%22%20x1%3D%220%22%20y1%3D%22-4%22%20x2%3D%220%22%20y2%3D%225%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f4f6f7%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23c3c9cd%22/%3E%3Cstop%20offset%3D%22.8%22%20stop-color%3D%22%238d959b%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e9edef%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22bo%22%20x1%3D%220%22%20y1%3D%22-4.6%22%20x2%3D%220%22%20y2%3D%225.6%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%239aa1a6%22/%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23e2e6e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235d6469%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22wd%22%20x1%3D%220%22%20y1%3D%22-3.4%22%20x2%3D%220%22%20y2%3D%224%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237a4126%22/%3E%3Cstop%20offset%3D%22.4%22%20stop-color%3D%22%2355291a%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2326110a%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22bl%22%20cx%3D%22.35%22%20cy%3D%22.4%22%20r%3D%22.7%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d42318%22/%3E%3Cstop%20offset%3D%22.6%22%20stop-color%3D%22%239c120c%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235e0805%22/%3E%3C/radialGradient%3E%3ClinearGradient%20id%3D%22bd%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237a0c08%22/%3E%3Cstop%20offset%3D%22.45%22%20stop-color%3D%22%23d12419%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%236a0a06%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg%20transform%3D%22translate%283%203%29%20rotate%2845%29%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M0%200%20Q3%20-3.6%208%20-4%20L34%20-4%20L34%205%20Q16%205.2%200%200%20Z%22%20fill%3D%22url%28%23st%29%22%20stroke%3D%22%23120808%22%20stroke-width%3D%22.7%22/%3E%3Cpath%20d%3D%22M1.2%200.35%20Q16%204.1%2033.6%204.25%20L33.6%204.8%20Q16%204.95%200.9%200.3%20Z%22%20fill%3D%22%23fbfcfc%22%20opacity%3D%22.85%22/%3E%3Cpath%20d%3D%22M8.5%20-3.3%20L33.5%20-3.3%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%22.55%22%20opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M0.7%200.15%20Q6%20-1.9%2014.5%20-1.1%20Q19.5%200.2%2017.6%202.6%20Q13.5%204.3%207.5%202.9%20Q3.2%201.9%200.7%200.15%20Z%22%20fill%3D%22url%28%23bl%29%22%20opacity%3D%22.95%22/%3E%3Cpath%20d%3D%22M17%201.5%20Q22%200.4%2026.5%201.9%20Q24%203.5%2019.5%203.6%20Z%22%20fill%3D%22%238f100b%22%20opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%2222.5%22%20cy%3D%22-1.8%22%20r%3D%22.75%22%20fill%3D%22%23a3140e%22/%3E%3Ccircle%20cx%3D%2225.6%22%20cy%3D%22-0.6%22%20r%3D%22.45%22%20fill%3D%22%23a3140e%22/%3E%3Ccircle%20cx%3D%2228.8%22%20cy%3D%22-2.4%22%20r%3D%22.55%22%20fill%3D%22%237d0d08%22/%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%22-2.6%22%20r%3D%22.5%22%20fill%3D%22%23b0160f%22/%3E%3Cpath%20d%3D%22M3%20-0.4%20Q8%20-1.6%2013%20-0.9%22%20stroke%3D%22%23ff6a5c%22%20stroke-width%3D%22.45%22%20fill%3D%22none%22%20opacity%3D%22.6%22/%3E%3Crect%20x%3D%2233.6%22%20y%3D%22-4.6%22%20width%3D%223.6%22%20height%3D%2210.2%22%20rx%3D%22.9%22%20fill%3D%22url%28%23bo%29%22%20stroke%3D%22%23120808%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2236.8%22%20y%3D%22-3.4%22%20width%3D%2221%22%20height%3D%227.4%22%20rx%3D%222.4%22%20fill%3D%22url%28%23wd%29%22%20stroke%3D%22%23120808%22%20stroke-width%3D%22.7%22/%3E%3Cpath%20d%3D%22M38.5%20-1.6%20Q46%20-2.4%2056%20-1.2%20M38.5%202.1%20Q47%201.3%2056%202.4%20M41%200.3%20Q48%20-0.2%2055%200.6%22%20stroke%3D%22%231c0b05%22%20stroke-width%3D%22.35%22%20fill%3D%22none%22%20opacity%3D%22.7%22/%3E%3Cg%20stroke%3D%22%232a2a2a%22%20stroke-width%3D%22.3%22%3E%3Ccircle%20cx%3D%2241.2%22%20cy%3D%22.3%22%20r%3D%221.15%22%20fill%3D%22%23d9d4cb%22/%3E%3Ccircle%20cx%3D%2247.2%22%20cy%3D%22.3%22%20r%3D%221.15%22%20fill%3D%22%23d9d4cb%22/%3E%3Ccircle%20cx%3D%2253.2%22%20cy%3D%22.3%22%20r%3D%221.15%22%20fill%3D%22%23d9d4cb%22/%3E%3C/g%3E%3Ccircle%20cx%3D%2240.8%22%20cy%3D%22-.1%22%20r%3D%22.4%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2246.8%22%20cy%3D%22-.1%22%20r%3D%22.4%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2252.8%22%20cy%3D%22-.1%22%20r%3D%22.4%22%20fill%3D%22%23fff%22/%3E%3Cpath%20d%3D%22M37.4%20-2.6%20Q39%20-3%2040.6%20-2.2%20Q39.6%20-1%2038%20-1.4%20Z%22%20fill%3D%22%237d0d08%22%20opacity%3D%22.9%22/%3E%3C/g%3E%3Cpath%20d%3D%22M7.210000000000001%2010.4%20L7.210000000000001%2018.6%20C7.210000000000001%2020.700000000000003%208.91%2020.700000000000003%208.91%2018.6%20L8.91%2010.4%20Z%22%20fill%3D%22url%28%23bd%29%22/%3E%3Cpath%20d%3D%22M10.23%2014.6%20L10.23%2019.2%20C10.23%2021.3%2011.629999999999999%2021.3%2011.629999999999999%2019.2%20L11.629999999999999%2014.6%20Z%22%20fill%3D%22url%28%23bd%29%22/%3E%3Cpath%20d%3D%22M13.26%2018.7%20L13.26%2024.9%20C13.26%2027.0%2014.819999999999999%2027.0%2014.819999999999999%2024.9%20L14.819999999999999%2018.7%20Z%22%20fill%3D%22url%28%23bd%29%22/%3E%3Ccircle%20cx%3D%228.06%22%20cy%3D%2223.4%22%20r%3D%221.05%22%20fill%3D%22%23b3170f%22/%3E%3Ccircle%20cx%3D%2214.04%22%20cy%3D%2229.4%22%20r%3D%22.8%22%20fill%3D%22%239c120c%22/%3E%3C/svg%3E") 4 4, pointer; }
+.slash-mark {
+  position: fixed; z-index: 30; pointer-events: none;
+  width: 90px; height: 3px; margin: -1.5px 0 0 -45px;
+  background: linear-gradient(90deg, transparent, var(--blood) 20%, #e33a2c 50%, var(--blood) 80%, transparent);
+  box-shadow: 0 0 6px rgba(158,27,22,0.8);
+  transform: rotate(var(--r)) scaleX(0);
+  animation: slash .6s ease-out forwards;
+}
+@keyframes slash {
+  0% { transform: rotate(var(--r)) scaleX(0); opacity: 1; }
+  12% { transform: rotate(var(--r)) scaleX(1); opacity: 1; }
+  60% { transform: rotate(var(--r)) scaleX(1); opacity: 1; }
+  100% { transform: rotate(var(--r)) scaleX(1); opacity: 0; }
+}
+.slash-mark { animation-duration: 1.25s; }
+.slash-drip {
+  position: fixed; z-index: 30; pointer-events: none;
+  width: var(--w); height: 0; margin-left: calc(var(--w) / -2);
+  background: linear-gradient(90deg, #6e0a06, #c91f15 45%, #7a0c08);
+  border-radius: 0 0 2px 2px;
+  animation: drip 1.7s cubic-bezier(.3,.1,.4,1) forwards;
+}
+.slash-drip::after {
+  content: ""; position: absolute; left: 50%; bottom: -3px;
+  width: calc(var(--w) + 3px); height: calc(var(--w) + 4px);
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 35% 35%, #e0392c, #a3140e 60%, #6e0a06);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+}
+@keyframes drip {
+  0% { height: 0; opacity: 1; }
+  65% { height: var(--len); opacity: 1; }
+  100% { height: calc(var(--len) + 6px); opacity: 0; }
+}
+/* red shadow on headings */
+.wordmark { text-shadow: 4px 4px 0 var(--blood), 0 0 28px rgba(200, 30, 22, 0.55); }
+.wordmark span { color: var(--bone); text-shadow: 4px 4px 0 #5c0906, 0 0 30px rgba(220, 35, 25, 0.75), 0 0 2px #e33a2c; color: #d8231a; }
+.sec-head h2, .host-body h3, .cue h3, .tagline, .platform strong, .tape .t, .faves li, .hosted span:not(.label):not(.amp) {
+  text-shadow: 2px 2px 0 var(--blood), 0 0 14px rgba(200, 30, 22, 0.45);
+}
+.tape.cover .t { text-shadow: 3px 3px 0 var(--blood), 0 0 16px rgba(220, 35, 25, 0.6), 0 2px 10px rgba(0,0,0,0.85); }
+.suggest-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.req { display: grid; gap: 16px; background: var(--sleeve); border: 1px solid var(--line); padding: 22px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field-row { display: grid; grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr); gap: 14px; }
+.field label { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dust); }
+.field .opt { text-transform: none; letter-spacing: 0; opacity: 0.7; }
+.field input, .field textarea {
+  width: 100%; font: inherit; color: var(--bone); background: var(--ground);
+  border: 1px solid var(--line); padding: 10px 12px; border-radius: 0;
+}
+.field textarea { resize: vertical; }
+.field input, .field textarea { cursor: text; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--sticker); }
+.field input[aria-invalid="true"] { border-color: #e33a2c; }
+.err { color: #e8584c; font-size: 0.85rem; }
+.btn {
+  justify-self: start; display: inline-block; text-decoration: none;
+  font-family: var(--f-head); font-weight: 800; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.06em;
+  background: var(--blood); color: var(--bone); border: 1px solid var(--blood); padding: 10px 18px 9px;
+}
+.btn:hover { background: #b8231c; }
+.btn.ghost { background: transparent; border-color: var(--line); color: var(--bone); }
+.btn.ghost:hover { border-color: var(--sticker); color: var(--sticker); }
+.send { display: grid; gap: 12px; min-width: 0; }
+.addr-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.addr { font-family: var(--f-mono); font-size: 1.05rem; color: var(--sticker); overflow-wrap: anywhere; user-select: all; }
+.note { color: var(--dust); font-size: 0.95rem; max-width: 46ch; }
+.ticket { border: 1px dashed var(--sticker); background: var(--sleeve); padding: 16px; display: grid; gap: 10px; }
+.ticket pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--f-mono); font-size: 0.85rem; line-height: 1.55; color: var(--bone); user-select: all; }
+.ticket-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.status { color: var(--sticker); font-family: var(--f-mono); font-size: 0.8rem; min-height: 1.2em; }
+.hero-grid { width: 100%; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.hero-copy { display: grid; gap: 28px; justify-items: start; min-width: 0; }
+.hero-art { margin: 0; max-width: 100%; transform: rotate(1.5deg); }
+.hero-art img { display: block; width: 100%; height: auto; border: 1px solid var(--line); box-shadow: 0 0 0 6px #0b0807, 0 0 0 7px var(--blood), 0 18px 40px rgba(0,0,0,0.7), 0 0 60px rgba(158,27,22,0.35); }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .hero-art { max-width: 520px; transform: none; }
+}
+@media (max-width: 860px) { .suggest-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .field-row { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .listen-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .hosts { grid-template-columns: minmax(0, 1fr); }
+  .cue { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  section { padding-block: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rec::before { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="jump" aria-label="Jump to a section">
+  <div class="jump-inner">
+    <span class="jump-label">Jump to</span>
+    <a href="#about">The Show</a>
+    <a href="#hosts">Hosts</a>
+    <a href="#format">How It Works</a>
+    <a href="#episodes">Episodes</a>
+    <a href="#suggest">What Should We Watch?</a>
+    <a href="#listen">Listen &amp; Follow</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="label rec">Rec · A weekly horror movie podcast</span>
+      <span class="label">SP · Tape 01</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 class="wordmark">Horror <span>Freaks</span></h1>
+        <p class="tagline">One horror movie a week. Start to finish. Every scene, every secret.</p>
+        <div class="hosted">
+          <span class="label" style="font-size:.75rem">Hosted by</span>
+          <span>Big J Millz</span><span class="amp">&amp;</span><span>J-Rod</span>
+        </div>
+        <div class="stickers">
+          <span class="sticker">Horror · Rewind before returning</span>
+          <div class="nsfw" role="note" aria-label="NSFW: Not Safe For Wimps">
+            <span class="nsfw-top">Viewer advisory</span>
+            <span class="nsfw-big">NSFW</span>
+            <span class="nsfw-bot">Not Safe For Wimps</span>
+          </div>
+        </div>
+        <p class="fine">Contains blood, guts, bad decisions, and two grown men screaming at characters who go into the basement.</p>
+      </div>
+      <figure class="hero-art">
+        <img src="img/hosts-cover-green.jpg" alt="Big J Millz and J-Rod, Masters of the Macabre, surrounded by famous horror villains" width="1024" height="1024">
+      </figure>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">The show</span>
+        <h2>Two freaks. One movie. Every week.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>Horror Freaks is a podcast for people who love horror movies as much as we do. Every week we pick a different film and walk through it from the opening credits to the final scare.</p>
+          <p>Along the way we dig up the behind-the-scenes stories, production trivia, and any extra fun stuff we can find about the movie. Classics, cult favorites, slashers, creature features, and whatever else keeps us up at night.</p>
+        </div>
+        <div class="spec" aria-label="Show details">
+          <dl>
+            <div class="row"><dt>Genre</dt><dd>Horror, all of it</dd></div>
+            <div class="row"><dt>Schedule</dt><dd>New episode weekly</dd></div>
+            <div class="row"><dt>Format</dt><dd>Full movie breakdown</dd></div>
+            <div class="row"><dt>Hosts</dt><dd>Big J Millz &amp; J-Rod</dd></div>
+            <div class="row"><dt>Rated</dt><dd><span class="rating">R</span> for Ridiculous</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hosts">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Your hosts</span>
+        <h2>Meet the freaks</h2>
+      </div>
+      <div class="hosts">
+        <article class="host">
+          <div class="host-plate"><img src="img/big-j-millz-green.jpg" alt="Big J Millz grinning in a bloodied flannel shirt, surrounded by famous horror villains" width="1278" height="816"></div>
+          <div class="host-body">
+            <h3>Big J Millz</h3>
+            <p>Born and raised in Oklahoma. Started watching scary movies at the tender age of 7, when his amazing mother taught him that what you see on the screen isn't always real. From there, his love for horror took off! Growing up on the most gruesome and scary films, J Millz discovered that not everything that goes bump in the dark can get you.</p>
+            <p><span class="sticker small-tag">Practical effects forever</span></p>
+            <p>A true lover of practical effects: the less CGI, the better!</p>
+            <p>Loves all kinds of horror, from the deep slashers to the corny killers. If it's horror, <strong class="in">J Millz is IN!!</strong></p>
+            <div class="faves">
+              <span class="label">Favorite movies &amp; shows</span>
+              <ul>
+                <li>Hellbound: Hellraiser II</li>
+                <li>Basket Case</li>
+                <li>A Nightmare on Elm Street</li>
+                <li>Dawn of the Dead</li>
+                <li>Killer Klowns from Outer Space</li>
+                <li>Grimm</li>
+                <li>Crystal Lake</li>
+                <li>Carrie (2026)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="host">
+          <div class="host-plate"><img src="img/j-rod-big-v2.jpg" alt="J-Rod, Master of the Macabre, surrounded by famous horror villains" width="1200" height="896"></div>
+          <div class="host-body">
+            <h3>J-Rod</h3>
+            <p>Born and raised in Cincinnati, Ohio, J-Rod has been a horror freak for as long as he can remember. His love for the genre started as a kid, watching horror movies with his mom and dad. Those early movie nights sparked a lifelong fascination with everything horror.</p>
+            <p>From classic slashers and supernatural thrillers to all the newest releases, <strong class="in">J-Rod loves it all!!!</strong></p>
+            <div class="faves">
+              <span class="label">Favorite movies &amp; shows</span>
+              <ul>
+                <li>The Halloween series</li>
+                <li class="nope">Except Halloween III</li>
+                <li>Stranger Things</li>
+                <li>Dawn of the Dead</li>
+                <li>Terrifier</li>
+              </ul>
+              <span class="faves-note">For obvious reasons. Stinker.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="format">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">How an episode runs</span>
+        <h2>Press play</h2>
+        <p>Every episode follows the movie from beginning to end, so you can watch along or listen after.</p>
+      </div>
+      <div class="run">
+        <div class="cue">
+          <span class="counter">00:00:00</span>
+          <div><h3>The pick</h3><p>We reveal this week's movie and why we chose it, plus our first memories of seeing it.</p></div>
+        </div>
+        <div class="cue">
+          <span class="counter">00:10:00</span>
+          <div><h3>Start to finish</h3><p>We go through the whole movie scene by scene: the kills, the jump scares, the questionable decisions, and the moments that still hold up.</p></div>
+        </div>
+        <div class="cue">
+          <span class="counter">00:45:00</span>
+          <div><h3>Behind the scenes</h3><p>Production stories, casting near-misses, practical effects, and the tidbits that happened off camera.</p></div>
+        </div>
+        <div class="cue">
+          <span class="counter">01:05:00</span>
+          <div><h3>Extra fun stuff</h3><p>Anything else we dug up: deleted scenes, sequels, remakes, fan theories, and weird trivia.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="episodes">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">The rental shelf</span>
+        <h2>Episodes</h2>
+        <p>Each week's movie gets its own tape on the shelf. These slots fill in as episodes go live.</p>
+      </div>
+      <div class="shelf">
+        <article class="feature">
+          <div class="tape next cover">
+            <canvas class="splat" id="splat-01" aria-hidden="true"></canvas>
+            <span class="ep">Episode 01</span>
+            <span class="t">Terrifier<small>2016</small></span>
+            <span class="out-now">Out<br>now!!</span>
+          </div>
+          <div class="feat-info">
+            <span class="label now-head">Now showing</span>
+            <a class="btn listen-ep" href="https://open.spotify.com/show/2ww5Wgex3Wu4OhzLSIJfHm" target="_blank" rel="noopener">Listen on Spotify&nbsp;→</a>
+            <dl>
+              <div class="frow"><dt>Running time</dt><dd>85 min</dd></div>
+              <div class="frow"><dt>Rated</dt><dd><span class="rating">NR</span> Released unrated</dd></div>
+              <div class="frow"><dt>Directed by</dt><dd>Damien Leone</dd></div>
+              <div class="frow"><dt>Cast</dt><dd class="cast">
+                <span>Jenna Kanell <em>as Tara Heyes</em></span>
+                <span>Samantha Scaffidi <em>as Victoria Heyes</em></span>
+                <span>David Howard Thornton <em>as Art the Clown</em></span>
+                <span>Catherine Corcoran <em>as Dawn Emerson</em></span>
+                <span>Pooya Mohseni <em>as the Cat Lady</em></span>
+              </dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="feature toxic">
+          <div class="tape next cover">
+            <canvas class="splat" id="splat-02" data-palette="toxic" data-seed="2025" aria-hidden="true"></canvas>
+            <span class="ep">Episode 02</span>
+            <span class="t">The Toxic Avenger<small>2025 · Drops 11/16/26</small></span>
+            <span class="out-now stamp-toxic">Up<br>next!!</span>
+          </div>
+          <div class="feat-info">
+            <span class="label now-head">Coming next</span>
+            <span class="drops">Drops <time datetime="2026-11-16">11/16/26</time></span>
+            <dl>
+              <div class="frow"><dt>Running time</dt><dd>102 min</dd></div>
+              <div class="frow"><dt>Rated</dt><dd><span class="rating">NR</span> Released unrated</dd></div>
+              <div class="frow"><dt>Directed by</dt><dd>Macon Blair</dd></div>
+              <div class="frow"><dt>Cast</dt><dd class="cast">
+                <span>Peter Dinklage <em>as Winston Gooze / Toxie</em></span>
+                <span>Jacob Tremblay <em>as Wade</em></span>
+                <span>Taylour Paige <em>as J.J. Doherty</em></span>
+                <span>Kevin Bacon <em>as Bob Garbinger</em></span>
+                <span>Elijah Wood <em>as Fritz</em></span>
+              </dd></div>
+            </dl>
+          </div>
+        </article>
+        <div class="tape">
+          <span class="ep">Episode 03</span>
+          <span class="t">Movie title<small>To be announced</small></span>
+          <span class="sticker tag dim">Reserved</span>
+        </div>
+        <div class="tape">
+          <span class="ep">Episode 04</span>
+          <span class="t">Movie title<small>To be announced</small></span>
+          <span class="sticker tag dim">Reserved</span>
+        </div>
+        <div class="tape">
+          <span class="ep">Episode 05</span>
+          <span class="t">Movie title<small>To be announced</small></span>
+          <span class="sticker tag dim">Reserved</span>
+        </div>
+        <div class="tape">
+          <span class="ep">Episode 06</span>
+          <span class="t">Movie title<small>To be announced</small></span>
+          <span class="sticker tag dim">Reserved</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="suggest">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Request line</span>
+        <h2>What should we watch?</h2>
+        <p>Got a movie you want Big J Millz and J-Rod to tear apart? Classic, cult, cursed, or so bad it's good, send it our way.</p>
+      </div>
+      <div class="suggest-grid">
+        <form class="req" id="req-form" novalidate>
+          <div class="field">
+            <label for="req-title">Movie title</label>
+            <input id="req-title" name="title" type="text" placeholder="e.g. The Thing" required autocomplete="off">
+            <span class="err" id="req-err" hidden>Add a movie title so we know what to watch.</span>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="req-year">Year <span class="opt">optional</span></label>
+              <input id="req-year" name="year" type="text" inputmode="numeric" maxlength="4" placeholder="1982">
+            </div>
+            <div class="field">
+              <label for="req-name">Your name or IG <span class="opt">optional</span></label>
+              <input id="req-name" name="name" type="text" placeholder="@yourhandle">
+            </div>
+          </div>
+          <div class="field">
+            <label for="req-why">Why this one? <span class="opt">optional</span></label>
+            <textarea id="req-why" name="why" rows="3" placeholder="Best practical effects ever. The blood test scene. Need I say more?"></textarea>
+          </div>
+          <button type="submit" class="btn">Write up my request</button>
+        </form>
+
+        <div class="send">
+          <span class="label">Send it to</span>
+          <div class="addr-row">
+            <span class="addr" id="addr">horrorfreakspod@gmail.com</span>
+            <button type="button" class="btn ghost" id="copy-addr">Copy email</button>
+          </div>
+          <p class="note">Fill out the request, then copy it and email it to us. You can also DM it to <a href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">@horrorfreakspod</a> on Instagram.</p>
+
+          <div class="vm">
+            <img src="img/voicemail-qr.png" alt="QR code for leaving Horror Freaks a voicemail" width="140" height="140">
+            <div class="vm-copy">
+              <span class="label">Rather say it out loud?</span>
+              <strong>Leave us a voicemail</strong>
+              <p>Scan the code with your phone camera, or tap the button to record a message for Big J Millz and J-Rod.</p>
+              <a class="btn" href="https://rss.com/podcasts/horror-freaks-podcast/voicemail/" target="_blank" rel="noopener">Leave a voicemail&nbsp;→</a>
+            </div>
+          </div>
+
+          <div class="ticket" id="ticket" hidden>
+            <span class="label">Your request</span>
+            <pre id="ticket-text"></pre>
+            <div class="ticket-actions">
+              <button type="button" class="btn" id="copy-req">Copy request</button>
+              <a class="btn ghost" id="mail-req" href="mailto:horrorfreakspod@gmail.com">Open in email app</a>
+            </div>
+            <p class="status" id="req-status" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="listen">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Tune in</span>
+        <h2>Listen &amp; follow</h2>
+        <p>Listen on Spotify or Apple Podcasts, and follow us for episode drops, polls, and next week's pick.</p>
+      </div>
+      <div class="social-grid">
+        <a class="platform social" href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">
+          <span class="label">Instagram</span><strong>@horrorfreakspod</strong><span class="go">Follow on Instagram →</span>
+        </a>
+        <a class="platform social" href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">
+          <span class="label">Facebook</span><strong>Horror Freaks Podcast</strong><span class="go">Follow on Facebook →</span>
+        </a>
+      </div>
+      <div class="listen-grid">
+        <a class="platform social" href="https://open.spotify.com/show/2ww5Wgex3Wu4OhzLSIJfHm" target="_blank" rel="noopener"><span class="label">Listen now</span><strong>Spotify</strong><span class="go">Listen on Spotify →</span></a>
+        <a class="platform social" href="https://podcasts.apple.com/us/podcast/horror-freaks-podcast/id6833118976" target="_blank" rel="noopener"><span class="label">Listen now</span><strong>Apple Podcasts</strong><span class="go">Listen on Apple Podcasts →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fm">Horror Freaks</span>
+    <span class="label"><a href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">Facebook</a> · Big J Millz &amp; J-Rod · NSFW: Not Safe For Wimps · Be kind, rewind</span>
+  </div>
+</footer>
+
+<audio id="theme" src="audio/horror-freaks-theme.mp3" preload="auto"></audio>
+<button type="button" class="deck" id="deck" aria-pressed="false" aria-label="Play the Horror Freaks theme song">
+  <span class="reels" aria-hidden="true"><i></i><i></i></span>
+  <span class="deck-txt"><span class="deck-state" id="deck-state">Tap anywhere for sound</span><span class="deck-song">Horror Freaks</span></span>
+</button>
+
+<script>
+(function () {
+  var PAL = {
+    blood: { ink: ['#7d0f0b', '#9e1b16', '#5c0906'], light: '#3b3532', glow: null },
+    toxic: { ink: ['#4c8a0e', '#86d61f', '#2d5507'], light: '#26301c', glow: 'rgba(134,214,31,0.28)' }
+  };
+  function paint(c) {
+    var pal = PAL[c.getAttribute('data-palette')] || PAL.blood;
+    var start = +c.getAttribute('data-seed') || 1031, seed = start;
+    function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    var r = c.getBoundingClientRect();
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.max(1, Math.round(r.width)), h = Math.max(1, Math.round(r.height));
+    c.width = w * dpr; c.height = h * dpr;
+    var x = c.getContext('2d');
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var g = x.createRadialGradient(w * 0.5, h * 0.42, 4, w * 0.5, h * 0.42, h * 0.75);
+    g.addColorStop(0, pal.light); g.addColorStop(0.55, '#141010'); g.addColorStop(1, '#050404');
+    x.fillStyle = g; x.fillRect(0, 0, w, h);
+    for (var i = 0; i < w * h * 0.05; i++) {
+      x.fillStyle = 'rgba(255,255,255,' + (rnd() * 0.06) + ')';
+      x.fillRect(rnd() * w, rnd() * h, 1, 1);
+    }
+    var ink = pal.ink;
+    var cx = w * 0.7, cy = h * 0.2, R = w * 0.22;
+    if (pal.glow) {
+      var gl = x.createRadialGradient(cx, cy, 2, cx, cy, R * 2.2);
+      gl.addColorStop(0, pal.glow); gl.addColorStop(1, 'rgba(0,0,0,0)');
+      x.fillStyle = gl; x.fillRect(0, 0, w, h);
+    }
+    x.fillStyle = ink[1];
+    x.beginPath(); x.arc(cx, cy, R * 0.55, 0, Math.PI * 2); x.fill();
+    for (var k = 0; k < 70; k++) {
+      var a = rnd() * Math.PI * 2, d = R * (0.3 + rnd() * 1.4), s = R * (0.03 + rnd() * 0.16) * (1.4 - d / (R * 1.7));
+      x.fillStyle = ink[k % 3];
+      x.beginPath(); x.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.9, Math.max(0.6, s), 0, Math.PI * 2); x.fill();
+    }
+    for (var j = 0; j < 6; j++) {
+      var dx = cx - R * 0.45 + rnd() * R * 0.9, len = h * (0.12 + rnd() * 0.38), dw = 2 + rnd() * 4;
+      x.fillStyle = ink[j % 2];
+      x.fillRect(dx - dw / 2, cy, dw, len);
+      x.beginPath(); x.arc(dx, cy + len, dw * 0.85, 0, Math.PI * 2); x.fill();
+    }
+    if (pal.glow) { // ooze bubbles
+      for (var q = 0; q < 9; q++) {
+        x.strokeStyle = 'rgba(160,235,60,' + (0.35 + rnd() * 0.4) + ')'; x.lineWidth = 1.2;
+        x.beginPath(); x.arc(cx - R + rnd() * R * 2, cy - R * 0.6 + rnd() * R * 1.4, 1.5 + rnd() * 4, 0, Math.PI * 2); x.stroke();
+      }
+    }
+    for (var m = 0; m < 30; m++) {
+      x.fillStyle = ink[m % 3];
+      x.beginPath(); x.arc(w * 0.12 + rnd() * w * 0.3, h * 0.78 + rnd() * h * 0.16, 0.6 + rnd() * 2.6, 0, Math.PI * 2); x.fill();
+    }
+    var b = x.createLinearGradient(0, h * 0.6, 0, h);
+    b.addColorStop(0, 'rgba(0,0,0,0)'); b.addColorStop(1, 'rgba(0,0,0,0.6)');
+    x.fillStyle = b; x.fillRect(0, 0, w, h);
+  }
+  document.querySelectorAll('canvas.splat').forEach(function (c) {
+    paint(c);
+    if (window.ResizeObserver) new ResizeObserver(function () { paint(c); }).observe(c);
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var a = document.getElementById('theme'), b = document.getElementById('deck'), st = document.getElementById('deck-state');
+  if (!a || !b) return;
+  a.volume = 0.6;
+  var userPaused = false, played = false;
+  a.loop = false;
+  function ui() {
+    var on = !a.paused;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.setAttribute('aria-label', on ? 'Pause the Horror Freaks theme song' : 'Play the Horror Freaks theme song');
+    st.textContent = on ? 'Now playing · tap to pause' : (a.ended ? 'Tap to play again' : (userPaused ? 'Paused · tap to play' : 'Tap anywhere for sound'));
+  }
+  function start() { var p = a.play(); if (p && p.catch) p.catch(function () {}); }
+  a.addEventListener('play', function () { played = true; ui(); }); a.addEventListener('pause', ui); a.addEventListener('ended', ui);
+  // Try right away; most browsers block this until the visitor interacts.
+  start();
+  function first(e) {
+    if (b.contains(e.target)) return;
+    if (!played && !userPaused && a.paused) start();
+    ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.removeEventListener(t, first, true); });
+  }
+  ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.addEventListener(t, first, true); });
+  b.addEventListener('click', function () {
+    if (a.paused) { userPaused = false; start(); } else { userPaused = true; a.pause(); }
+  });
+  ui();
+})();
+</script>
+
+<script>
+(function () {
+  var ctx = null, noise = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setup() {
+    if (ctx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    ctx = new AC();
+    var len = Math.floor(ctx.sampleRate * 0.5);
+    noise = ctx.createBuffer(1, len, ctx.sampleRate);
+    var d = noise.getChannelData(0);
+    for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  }
+  function slash() {
+    setup();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') ctx.resume();
+    var t = ctx.currentTime, v = 0.9 + Math.random() * 0.2;
+    var out = ctx.createGain(); out.gain.value = 0.8;
+    // a little grit so the goo sounds thick and nasty
+    if (!window.__goo) {
+      var curve = new Float32Array(1024);
+      for (var ci = 0; ci < 1024; ci++) { var xx = ci / 512 - 1; curve[ci] = Math.tanh(3.2 * xx) / Math.tanh(3.2); }
+      window.__goo = curve;
+    }
+    var grit = ctx.createWaveShaper(); grit.curve = window.__goo; grit.oversample = '2x';
+    out.connect(grit); grit.connect(ctx.destination);
+    function noiseSrc(at, dur) {
+      var n = ctx.createBufferSource(); n.buffer = noise;
+      n.start(at, Math.random() * 0.25); n.stop(at + dur + 0.03);
+      return n;
+    }
+    function env(node, at, attack, peak, dur) {
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(peak, at + attack);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+      node.connect(g); return g;
+    }
+    // 1. blade swing: airy whoosh rising in pitch
+    var w = noiseSrc(t, 0.16);
+    var wf = ctx.createBiquadFilter(); wf.type = 'bandpass'; wf.Q.value = 2.2;
+    wf.frequency.setValueAtTime(450 * v, t);
+    wf.frequency.exponentialRampToValueAtTime(2200 * v, t + 0.14);
+    w.connect(wf); env(wf, t, 0.09, 0.2, 0.17).connect(out);
+    // 2. the cut: bright, sharp "shhk" as the edge opens the skin
+    var c = t + 0.11;
+    var cs = noiseSrc(c, 0.22);
+    var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 600;
+    var pk = ctx.createBiquadFilter(); pk.type = 'peaking'; pk.Q.value = 1.4; pk.gain.value = 9;
+    pk.frequency.setValueAtTime(1600 * v, c);
+    pk.frequency.exponentialRampToValueAtTime(700 * v, c + 0.2);
+    cs.connect(hp); hp.connect(pk); env(pk, c, 0.006, 0.3, 0.2).connect(out);
+    // 3. wet tear: mid noise chopped into tiny ragged bursts
+    var tr = noiseSrc(c + 0.01, 0.3);
+    var tf = ctx.createBiquadFilter(); tf.type = 'bandpass'; tf.Q.value = 2.6;
+    tf.frequency.setValueAtTime(1100 * v, c);
+    tf.frequency.exponentialRampToValueAtTime(260 * v, c + 0.36);
+    var chop = ctx.createGain(); chop.gain.value = 0;
+    var tt = c + 0.01, end = c + 0.38;
+    while (tt < end) {
+      var len = 0.006 + Math.random() * 0.018, lvl = (0.25 + Math.random() * 0.75) * (1 - (tt - c) / 0.34);
+      chop.gain.setValueAtTime(Math.max(lvl, 0), tt);
+      chop.gain.setValueAtTime(0.02, tt + len);
+      tt += len + Math.random() * 0.012;
+    }
+    chop.gain.setValueAtTime(0, end);
+    tr.connect(tf); tf.connect(chop); env(chop, c, 0.01, 0.75, 0.4).connect(out);
+    // 4. deep wet body: low, muffled slop under everything
+    var sl = noiseSrc(c, 0.42);
+    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 4;
+    lp.frequency.setValueAtTime(520 * v, c);
+    lp.frequency.exponentialRampToValueAtTime(140, c + 0.4);
+    sl.connect(lp); env(lp, c, 0.02, 0.85, 0.42).connect(out);
+    // 5. gooey gurgles: a few thick bubbles popping and sliding down
+    var bubbles = 4 + Math.floor(Math.random() * 3);
+    for (var k = 0; k < bubbles; k++) {
+      var bt = c + 0.05 + k * (0.05 + Math.random() * 0.035);
+      var bs = noiseSrc(bt, 0.13);
+      var bf = ctx.createBiquadFilter(); bf.type = 'bandpass'; bf.Q.value = 14 + Math.random() * 8;
+      var f0 = (520 + Math.random() * 380) * v * (1 - k * 0.08);
+      bf.frequency.setValueAtTime(f0, bt);
+      bf.frequency.exponentialRampToValueAtTime(f0 * (0.3 + Math.random() * 0.15), bt + 0.11);
+      bs.connect(bf); env(bf, bt, 0.008, 1.6 - k * 0.15, 0.12 + Math.random() * 0.05).connect(out);
+    }
+    // 6. sticky smacks: tiny wet clicks as the flesh pulls apart
+    var smacks = 7 + Math.floor(Math.random() * 5);
+    for (var q = 0; q < smacks; q++) {
+      var st = c + 0.08 + Math.random() * 0.42;
+      var ss = noiseSrc(st, 0.03);
+      var sb = ctx.createBiquadFilter(); sb.type = 'bandpass'; sb.Q.value = 3.5;
+      sb.frequency.value = (1100 + Math.random() * 1500) * v;
+      ss.connect(sb); env(sb, st, 0.001, 0.35 + Math.random() * 0.4, 0.008 + Math.random() * 0.014).connect(out);
+    }
+    // 7. suction: a wobbling, slurping pull as the blade comes back out
+    var su = c + 0.22;
+    var sn = noiseSrc(su, 0.36);
+    var sbf = ctx.createBiquadFilter(); sbf.type = 'bandpass'; sbf.Q.value = 22;
+    sbf.frequency.setValueAtTime(380 * v, su);
+    sbf.frequency.exponentialRampToValueAtTime(110 * v, su + 0.34);
+    var wob = ctx.createOscillator(); wob.frequency.value = 11 + Math.random() * 6;
+    var wobAmt = ctx.createGain(); wobAmt.gain.value = 70;
+    wob.connect(wobAmt); wobAmt.connect(sbf.frequency); wob.start(su); wob.stop(su + 0.38);
+    sn.connect(sbf); env(sbf, su, 0.04, 2.2, 0.36).connect(out);
+    // 8. blood drips hitting the floor
+    var drops = 2 + Math.floor(Math.random() * 2);
+    for (var dd = 0; dd < drops; dd++) {
+      var dt = c + 0.55 + dd * (0.14 + Math.random() * 0.12);
+      var po = ctx.createOscillator(); po.type = 'sine';
+      po.frequency.setValueAtTime((700 + Math.random() * 300) * v, dt);
+      po.frequency.exponentialRampToValueAtTime(180, dt + 0.05);
+      env(po, dt, 0.003, 0.22, 0.07).connect(out); po.start(dt); po.stop(dt + 0.08);
+      var spl = noiseSrc(dt, 0.04);
+      var slf = ctx.createBiquadFilter(); slf.type = 'lowpass'; slf.frequency.value = 1300;
+      spl.connect(slf); env(slf, dt, 0.002, 0.25, 0.035).connect(out);
+    }
+  }
+  function mark(x, y) {
+    if (reduce) return;
+    var m = document.createElement('span');
+    m.className = 'slash-mark';
+    m.style.left = x + 'px'; m.style.top = y + 'px';
+    var deg = -35 + Math.random() * 20, rad = deg * Math.PI / 180;
+    m.style.setProperty('--r', deg + 'deg');
+    document.body.appendChild(m);
+    setTimeout(function () { m.remove(); }, 1300);
+    // blood running down from the cut
+    var n = 2 + Math.floor(Math.random() * 3);
+    for (var i = 0; i < n; i++) {
+      var d = -32 + Math.random() * 64;
+      var dr = document.createElement('span');
+      dr.className = 'slash-drip';
+      dr.style.left = (x + d * Math.cos(rad)) + 'px';
+      dr.style.top = (y + d * Math.sin(rad)) + 'px';
+      dr.style.setProperty('--len', (12 + Math.random() * 30) + 'px');
+      dr.style.setProperty('--w', (2.5 + Math.random() * 2) + 'px');
+      dr.style.animationDelay = (0.12 + Math.random() * 0.25) + 's';
+      document.body.appendChild(dr);
+      (function (el) { setTimeout(function () { el.remove(); }, 2200); })(dr);
+    }
+  }
+  document.addEventListener('pointerdown', function (e) {
+    if (e.button && e.button !== 0) return;
+    if (e.target.closest && e.target.closest('#deck')) return;
+    slash(); mark(e.clientX, e.clientY);
+  }, true);
+})();
+</script>
+
+<script>
+(function () {
+  var EMAIL = 'horrorfreakspod@gmail.com';
+  var f = document.getElementById('req-form');
+  if (!f) return;
+  var title = document.getElementById('req-title'), err = document.getElementById('req-err');
+  var ticket = document.getElementById('ticket'), txt = document.getElementById('ticket-text');
+  var mail = document.getElementById('mail-req'), status = document.getElementById('req-status');
+  function selectText(el) {
+    try { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+  }
+  function copy(text, el, okMsg) {
+    function fallback() { selectText(el); status.textContent = 'Text selected. Press Ctrl+C (or Cmd+C) to copy.'; }
+    try {
+      navigator.clipboard.writeText(text).then(function () { status.textContent = okMsg; }, fallback);
+    } catch (e) { fallback(); }
+  }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var t = title.value.trim();
+    if (!t) { err.hidden = false; title.setAttribute('aria-invalid', 'true'); title.focus(); return; }
+    err.hidden = true; title.removeAttribute('aria-invalid');
+    var y = document.getElementById('req-year').value.trim();
+    var n = document.getElementById('req-name').value.trim();
+    var w = document.getElementById('req-why').value.trim();
+    var body = 'Horror Freaks movie request\n\nMovie: ' + t + (y ? ' (' + y + ')' : '') +
+      (w ? '\nWhy: ' + w : '') + '\nFrom: ' + (n || 'A fellow freak');
+    txt.textContent = body;
+    mail.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Movie request: ' + t) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Now copy it and email it to ' + EMAIL + '.';
+    ticket.hidden = false;
+    ticket.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+  title.addEventListener('input', function () { if (title.value.trim()) { err.hidden = true; title.removeAttribute('aria-invalid'); } });
+  document.getElementById('copy-req').addEventListener('click', function () {
+    copy(txt.textContent, txt, 'Copied. Paste it into an email to ' + EMAIL + '.');
+  });
+  document.getElementById('copy-addr').addEventListener('click', function () {
+    var a = document.getElementById('addr');
+    function fb() { selectText(a); }
+    try { navigator.clipboard.writeText(EMAIL).then(function () { var b = document.getElementById('copy-addr'); b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy email'; }, 1800); }, fb); } catch (e) { fb(); }
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.jump a'));
+  if (!links.length || !window.IntersectionObserver) return;
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && map[en.target.id]) {
+        links.forEach(function (l) { l.classList.remove('on'); });
+        var a = map[en.target.id]; a.classList.add('on');
+        try { a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); } catch (e) {}
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+</body>
+</html>
