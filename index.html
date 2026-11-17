@@ -264,6 +264,19 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .out-now.stamp-corpse { color: #f0953a; border-color: #f0953a; outline-color: #f0953a; text-shadow: 0 0 1px #f0953a, 0 0 10px rgba(240,149,58,0.5); }
 .feature.corpse .tape.cover .t { font-size: 1.6rem; text-shadow: 3px 3px 0 #5a2606, 0 0 16px rgba(224,123,34,0.55), 0 2px 10px rgba(0,0,0,0.85); }
 @media (max-width: 600px) { .feature.corpse .tape.cover > .out-now { font-size: 1.4rem; bottom: 14px; } }
+.sponsor { padding-block: 0; border-bottom: 0; }
+.sponsor-inner { padding-block: 28px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px 40px; align-items: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(90deg, rgba(158,27,22,0.16), transparent 70%); }
+.sp-copy { display: grid; gap: 8px; min-width: 0; }
+.sp-label { color: var(--sticker); }
+.sp-head { font-family: var(--f-head); font-weight: 800; font-size: clamp(1.6rem, 3.6vw, 2.3rem); line-height: 1.05; text-transform: uppercase; letter-spacing: 0.02em; text-shadow: 2px 2px 0 var(--blood), 0 0 14px rgba(200,30,22,0.45); }
+.sp-head span { color: var(--sticker); }
+.sp-copy p { color: var(--dust); max-width: 52ch; }
+.sp-copy strong { color: var(--bone); }
+.sp-code { display: grid; gap: 10px; justify-items: start; border: 2px dashed var(--sticker); padding: 16px 18px; background: var(--sleeve); }
+.code-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.code { font-family: var(--f-head); font-weight: 800; font-size: 2.4rem; letter-spacing: 0.14em; line-height: 1; color: var(--bone); background: var(--blood); padding: 6px 14px 3px; user-select: all; }
+.sp-fine { font-family: var(--f-mono); font-size: 0.72rem; color: var(--dust); }
+@media (max-width: 760px) { .sponsor-inner { grid-template-columns: minmax(0, 1fr); } }
 @keyframes stamp { 0% { transform: rotate(-12deg) scale(1.9); opacity: 0.4; } 100% { transform: rotate(-12deg) scale(1); opacity: 0.92; } }
 @media (prefers-reduced-motion: reduce) { .out-now { animation: none; } }
 .frow { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.86rem; line-height: 1.4; }
@@ -625,6 +638,25 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
 </header>
 
 <main>
+  <section id="sponsor" class="sponsor" aria-label="Our sponsor">
+    <div class="wrap sponsor-inner">
+      <div class="sp-copy">
+        <span class="label sp-label">Our sponsor</span>
+        <h2 class="sp-head">Fuel your horror nights with <span>Dubby</span></h2>
+        <p>Dubby energy drink mix keeps Big J Millz and J-Rod going through every jump scare. Use our code for <strong>10% off</strong> your order.</p>
+      </div>
+      <div class="sp-code">
+        <span class="label">Horror Freaks code</span>
+        <div class="code-row">
+          <span class="code" id="sp-code">STAB</span>
+          <button type="button" class="btn ghost" id="sp-copy">Copy code</button>
+        </div>
+        <a class="btn" href="https://www.dubby.gg" target="_blank" rel="noopener sponsored">Shop Dubby.gg&nbsp;→</a>
+        <span class="sp-fine">10% off with code STAB at checkout.</span>
+      </div>
+    </div>
+  </section>
+
   <section id="about">
     <div class="wrap">
       <div class="sec-head">
@@ -953,7 +985,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
 <footer>
   <div class="wrap">
     <span class="fm">Horror Freaks</span>
-    <span class="label"><a href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">Facebook</a> · Big J Millz &amp; J-Rod · NSFW: Not Safe For Wimps · Be kind, rewind</span>
+    <span class="label">Sponsored by <a href="https://www.dubby.gg" target="_blank" rel="noopener sponsored">Dubby.gg</a> (code STAB) · <a href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">Facebook</a> · Big J Millz &amp; J-Rod · NSFW: Not Safe For Wimps · Be kind, rewind</span>
   </div>
 </footer>
 
@@ -1309,6 +1341,17 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
   }
   load();
   var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(load, 400); });
+})();
+</script>
+
+<script>
+(function () {
+  var b = document.getElementById('sp-copy'), c = document.getElementById('sp-code');
+  if (!b || !c) return;
+  b.addEventListener('click', function () {
+    function sel() { try { var r = document.createRange(); r.selectNodeContents(c); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {} b.textContent = 'Press Ctrl+C'; }
+    try { navigator.clipboard.writeText('STAB').then(function () { b.textContent = 'Copied!'; setTimeout(function () { b.textContent = 'Copy code'; }, 1800); }, sel); } catch (e) { sel(); }
+  });
 })();
 </script>
 </body>
