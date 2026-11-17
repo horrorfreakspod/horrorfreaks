@@ -196,7 +196,9 @@ section { padding-block: 64px; border-bottom: 1px solid var(--line); }
 .feature.toxic { border-color: #5f9a16; }
 .feature.toxic .tape.next { border-right: 1px solid #3b5a14; }
 .feature.toxic .now-head { color: #9be23a; }
-.drops { justify-self: start; font-family: var(--f-head); font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; color: #0d1405; background: #8fe02a; padding: 7px 12px 5px; box-shadow: 3px 3px 0 #2d5507, 0 0 18px rgba(143,224,42,0.35); font-variant-numeric: tabular-nums; }
+.drops { justify-self: start; font-family: var(--f-head); font-weight: 800; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; color: #0d1405; background: #8fe02a; padding: 7px 12px 5px; box-shadow: 3px 3px 0 #2d5507, 0 0 18px rgba(143,224,42,0.35); font-variant-numeric: tabular-nums; }
+.tape.cover > .out-now.stamp-toxic { font-size: clamp(1.6rem, 2.6vw, 1.95rem); }
+@media (max-width: 600px) { .feature.toxic .tape.cover > .out-now.stamp-toxic { font-size: 1.25rem; bottom: 14px; left: auto; right: 22px; transform-origin: right bottom; } }
 .out-now.stamp-toxic { color: #8fe02a; border-color: #8fe02a; outline-color: #8fe02a; text-shadow: 0 0 1px #8fe02a, 0 0 10px rgba(143,224,42,0.5); }
 .feature.toxic .tape.cover .t { text-shadow: 3px 3px 0 #2d5507, 0 0 16px rgba(134,214,31,0.55), 0 2px 10px rgba(0,0,0,0.85); }
 .vm { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; border: 1px solid var(--blood); background: var(--sleeve); padding: 14px; }
@@ -775,12 +777,13 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
           <div class="tape next cover">
             <canvas class="splat" id="splat-02" data-palette="toxic" data-seed="2025" aria-hidden="true"></canvas>
             <span class="ep">Episode 02</span>
-            <span class="t">The Toxic Avenger<small>2025 · Drops 11/16/26</small></span>
-            <span class="out-now stamp-toxic">Up<br>next!!</span>
+            <span class="t">The Toxic Avenger<small>2025 · Out 11/16/26</small></span>
+            <span class="out-now stamp-toxic">Now<br>playing!!!</span>
           </div>
           <div class="feat-info">
-            <span class="label now-head">Coming next</span>
-            <span class="drops">Drops <time datetime="2026-11-16">11/16/26</time></span>
+            <span class="label now-head">Now playing</span>
+            <span class="drops">Out now <time datetime="2026-11-16">11/16/26</time></span>
+            <a class="btn listen-ep" href="https://open.spotify.com/show/2ww5Wgex3Wu4OhzLSIJfHm" target="_blank" rel="noopener">Listen on Spotify&nbsp;→</a>
             <dl>
               <div class="frow"><dt>Running time</dt><dd>102 min</dd></div>
               <div class="frow"><dt>Rated</dt><dd><span class="rating">NR</span> Released unrated</dd></div>
