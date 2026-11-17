@@ -258,6 +258,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .fb-side { display: grid; gap: 16px; align-content: start; }
 .fb-side p { color: var(--dust); max-width: 40ch; }
 @media (max-width: 860px) { .fb-wrap { grid-template-columns: minmax(0, 1fr); } .fb-frame { justify-self: center; } }
+.feature.corpse { border-color: #b8601a; }
+.feature.corpse .tape.next { border-right: 1px solid #5a3414; }
+.feature.corpse .now-head { color: #f0953a; }
+.out-now.stamp-corpse { color: #f0953a; border-color: #f0953a; outline-color: #f0953a; text-shadow: 0 0 1px #f0953a, 0 0 10px rgba(240,149,58,0.5); }
+.feature.corpse .tape.cover .t { font-size: 1.6rem; text-shadow: 3px 3px 0 #5a2606, 0 0 16px rgba(224,123,34,0.55), 0 2px 10px rgba(0,0,0,0.85); }
+@media (max-width: 600px) { .feature.corpse .tape.cover > .out-now { font-size: 1.4rem; bottom: 14px; } }
 @keyframes stamp { 0% { transform: rotate(-12deg) scale(1.9); opacity: 0.4; } 100% { transform: rotate(-12deg) scale(1); opacity: 0.92; } }
 @media (prefers-reduced-motion: reduce) { .out-now { animation: none; } }
 .frow { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.86rem; line-height: 1.4; }
@@ -798,11 +804,30 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
             </dl>
           </div>
         </article>
-        <div class="tape">
-          <span class="ep">Episode 03</span>
-          <span class="t">Movie title<small>To be announced</small></span>
-          <span class="sticker tag dim">Reserved</span>
-        </div>
+        <article class="feature corpse">
+          <div class="tape next cover">
+            <canvas class="splat" id="splat-03" data-palette="corpse" data-seed="2003" aria-hidden="true"></canvas>
+            <span class="ep">Episode 03</span>
+            <span class="t">House of 1000 Corpses<small>2003 · Rob Zombie</small></span>
+            <span class="out-now stamp-corpse">Up<br>next!!</span>
+          </div>
+          <div class="feat-info">
+            <span class="label now-head">Coming next</span>
+            <dl>
+              <div class="frow"><dt>Running time</dt><dd>89 min</dd></div>
+              <div class="frow"><dt>Rated</dt><dd><span class="rating">R</span> Rated R</dd></div>
+              <div class="frow"><dt>Directed by</dt><dd>Rob Zombie</dd></div>
+              <div class="frow"><dt>Cast</dt><dd class="cast">
+                <span>Sid Haig <em>as Captain Spaulding</em></span>
+                <span>Bill Moseley <em>as Otis B. Driftwood</em></span>
+                <span>Sheri Moon <em>as Baby Firefly</em></span>
+                <span>Karen Black <em>as Mother Firefly</em></span>
+                <span>Chris Hardwick <em>as Jerry Goldsmith</em></span>
+                <span>Rainn Wilson <em>as Bill Hudley</em></span>
+              </dd></div>
+            </dl>
+          </div>
+        </article>
         <div class="tape">
           <span class="ep">Episode 04</span>
           <span class="t">Movie title<small>To be announced</small></span>
@@ -810,11 +835,6 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
         </div>
         <div class="tape">
           <span class="ep">Episode 05</span>
-          <span class="t">Movie title<small>To be announced</small></span>
-          <span class="sticker tag dim">Reserved</span>
-        </div>
-        <div class="tape">
-          <span class="ep">Episode 06</span>
           <span class="t">Movie title<small>To be announced</small></span>
           <span class="sticker tag dim">Reserved</span>
         </div>
@@ -947,7 +967,8 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
 (function () {
   var PAL = {
     blood: { ink: ['#7d0f0b', '#9e1b16', '#5c0906'], light: '#3b3532', glow: null },
-    toxic: { ink: ['#4c8a0e', '#86d61f', '#2d5507'], light: '#26301c', glow: 'rgba(134,214,31,0.28)' }
+    toxic: { ink: ['#4c8a0e', '#86d61f', '#2d5507'], light: '#26301c', glow: 'rgba(134,214,31,0.28)', bubble: '160,235,60' },
+    corpse: { ink: ['#8a3b0a', '#e07b22', '#5a2606'], light: '#33231a', glow: 'rgba(224,123,34,0.26)', bubble: '245,160,80' }
   };
   function paint(c) {
     var pal = PAL[c.getAttribute('data-palette')] || PAL.blood;
@@ -988,7 +1009,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
     }
     if (pal.glow) { // ooze bubbles
       for (var q = 0; q < 9; q++) {
-        x.strokeStyle = 'rgba(160,235,60,' + (0.35 + rnd() * 0.4) + ')'; x.lineWidth = 1.2;
+        x.strokeStyle = 'rgba(' + (pal.bubble || '160,235,60') + ',' + (0.35 + rnd() * 0.4) + ')'; x.lineWidth = 1.2;
         x.beginPath(); x.arc(cx - R + rnd() * R * 2, cy - R * 0.6 + rnd() * R * 1.4, 1.5 + rnd() * 4, 0, Math.PI * 2); x.stroke();
       }
     }
