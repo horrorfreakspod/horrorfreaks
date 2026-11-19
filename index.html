@@ -13,7 +13,7 @@ img{max-width:100%}
 <title>Horror Freaks</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&family=Barlow+Condensed:wght@600;800&family=Libre+Franklin:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&family=Creepster&family=Barlow+Condensed:wght@600;800&family=Libre+Franklin:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
 /* Layout: a late-night horror rental shelf — the page reads like a VHS sleeve, with tape-counter timestamps marking the episode run. Single deliberate dark look. */
 :root {
@@ -101,7 +101,7 @@ a { color: var(--sticker); }
 .wordmark {
   font-family: var(--f-display);
   font-weight: 400;
-  font-size: clamp(2.6rem, 10vw, 6.4rem);
+  font-size: clamp(2.6rem, 5.6vw, 5.2rem);
   line-height: 1.05;
   color: var(--bone);
   letter-spacing: 0.01em;
@@ -304,6 +304,26 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   box-shadow: 3px 3px 0 #0b0807, 0 0 22px rgba(200,30,22,0.45);
   text-shadow: 1px 1px 0 #3a0a07;
 }
+/* creepy "hosted by" */
+.hosted.creepy { gap: 6px 16px; align-items: baseline; }
+.hosted.creepy .hb { font-family: var(--f-mono); font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blood); text-shadow: 0 0 8px rgba(200,30,22,0.7); animation: dying-light 7s steps(1) infinite; }
+.hosted.creepy .host-name {
+  font-family: "Creepster", "Nosifer", Impact, fantasy; font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 2.8rem); line-height: 1; letter-spacing: 0.04em; text-transform: none;
+  color: var(--bone);
+  text-shadow: 0 3px 0 #5c0906, 0 6px 0 rgba(92,9,6,0.55), 0 0 18px rgba(200,30,22,0.65), 0 0 2px #000 !important;
+  display: inline-block; transition: transform .25s ease, color .25s ease;
+}
+.hosted.creepy .hn1 { transform: rotate(-3deg); }
+.hosted.creepy .hn2 { transform: rotate(2.5deg); }
+.hosted.creepy .host-name:hover { color: #ffd9cf; transform: rotate(0deg) scale(1.06); }
+.hosted.creepy .hn2 { animation: flicker 9s linear infinite; }
+.hosted.creepy .amp { font-family: var(--f-display); font-size: clamp(1.6rem, 3.4vw, 2.2rem); color: var(--blood); text-shadow: 0 0 14px rgba(200,30,22,0.8); }
+@keyframes flicker { 0%, 91%, 93.5%, 96%, 100% { opacity: 1; } 92%, 95% { opacity: 0.25; } }
+@keyframes dying-light { 0%, 100% { opacity: 1; } 60% { opacity: 0.35; } 62% { opacity: 1; } 64% { opacity: 0.5; } 66% { opacity: 1; } }
+@media (max-width: 860px) { .wordmark { font-size: clamp(2.6rem, 11vw, 4.6rem); } }
+@media (max-width: 480px) { .hosted.creepy { gap: 4px 10px; } .hosted.creepy .hb { flex-basis: 100%; } .hosted.creepy .host-name { font-size: 1.7rem; } .hosted.creepy .amp { font-size: 1.3rem; } }
+@media (prefers-reduced-motion: reduce) { .hosted.creepy .hn2, .hosted.creepy .hb { animation: none; } .hosted.creepy .host-name { transition: none; } }
 @keyframes stamp { 0% { transform: rotate(-12deg) scale(1.9); opacity: 0.4; } 100% { transform: rotate(-12deg) scale(1); opacity: 0.92; } }
 @media (prefers-reduced-motion: reduce) { .out-now { animation: none; } }
 .frow { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.86rem; line-height: 1.4; }
@@ -645,9 +665,9 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
         <h1 class="wordmark">Horror <span>Freaks</span></h1>
         <p class="tagline">One horror movie a week. Start to finish. Every scene, every secret.</p>
         <p class="drop-day">A new movie drops every Monday!</p>
-        <div class="hosted">
-          <span class="label" style="font-size:.75rem">Hosted by</span>
-          <span>Big J Millz</span><span class="amp">&amp;</span><span>J-Rod</span>
+        <div class="hosted creepy">
+          <span class="hb">Hosted by&hellip;</span>
+          <span class="host-name hn1">Big J Millz</span><span class="amp">&amp;</span><span class="host-name hn2">J-Rod</span>
         </div>
         <div class="stickers">
           <span class="sticker">Horror · Rewind before returning</span>
