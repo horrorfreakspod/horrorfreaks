@@ -295,6 +295,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .ma-list a span { color: var(--sticker); }
 .ma-list a:hover, .ma-list a:focus-visible { border-color: var(--sticker); color: var(--sticker); }
 @media (prefers-reduced-motion: reduce) { .ma-caret { transition: none; } }
+.drop-day {
+  display: inline-block; margin: 0;
+  font-family: var(--f-head); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(1.05rem, 2vw, 1.3rem); letter-spacing: 0.04em; line-height: 1.15;
+  color: var(--bone); background: var(--blood);
+  padding: 8px 14px 6px;
+  box-shadow: 3px 3px 0 #0b0807, 0 0 22px rgba(200,30,22,0.45);
+  text-shadow: 1px 1px 0 #3a0a07;
+}
 @keyframes stamp { 0% { transform: rotate(-12deg) scale(1.9); opacity: 0.4; } 100% { transform: rotate(-12deg) scale(1); opacity: 0.92; } }
 @media (prefers-reduced-motion: reduce) { .out-now { animation: none; } }
 .frow { display: grid; gap: 2px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.86rem; line-height: 1.4; }
@@ -635,6 +644,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
       <div class="hero-copy">
         <h1 class="wordmark">Horror <span>Freaks</span></h1>
         <p class="tagline">One horror movie a week. Start to finish. Every scene, every secret.</p>
+        <p class="drop-day">A new movie drops every Monday!</p>
         <div class="hosted">
           <span class="label" style="font-size:.75rem">Hosted by</span>
           <span>Big J Millz</span><span class="amp">&amp;</span><span>J-Rod</span>
@@ -692,7 +702,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
         <div class="spec" aria-label="Show details">
           <dl>
             <div class="row"><dt>Genre</dt><dd>Horror, all of it</dd></div>
-            <div class="row"><dt>Schedule</dt><dd>New episode weekly</dd></div>
+            <div class="row"><dt>Schedule</dt><dd>New episode every Monday</dd></div>
             <div class="row"><dt>Format</dt><dd>Full movie breakdown</dd></div>
             <div class="row"><dt>Hosts</dt><dd>Big J Millz &amp; J-Rod</dd></div>
             <div class="row"><dt>Rated</dt><dd><span class="rating">R</span> for Ridiculous</dd></div>
