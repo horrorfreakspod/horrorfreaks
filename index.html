@@ -447,12 +447,14 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   padding: 18px;
   display: grid; gap: 4px;
 }
-.social-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
+.social-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
 .platform.social { text-decoration: none; color: var(--bone); border-color: var(--blood); background: linear-gradient(180deg, #2c110f, var(--sleeve)); gap: 6px; transition: transform .15s ease, border-color .15s ease; }
 .platform.social:hover { transform: translateY(-2px); border-color: var(--sticker); }
 .platform.social strong { font-size: 1.6rem; overflow-wrap: anywhere; }
 .platform.social .go { color: var(--sticker); }
-@media (max-width: 600px) { .social-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 860px) { .social-grid { grid-template-columns: minmax(0, 1fr); } }
+.social-grid .platform.social strong { font-size: clamp(1.05rem, 1.75vw, 1.35rem); }
+@media (max-width: 860px) { .social-grid .platform.social strong { font-size: 1.5rem; } }
 @media (prefers-reduced-motion: reduce) { .platform.social { transition: none; } }
 .platform strong { font-family: var(--f-head); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .platform span { font-family: var(--f-mono); font-size: 0.78rem; color: var(--dust); }
@@ -965,6 +967,9 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
         <a class="platform social" href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">
           <span class="label">Facebook</span><strong>Horror Freaks Podcast</strong><span class="go">Follow on Facebook →</span>
         </a>
+        <a class="platform social" href="https://www.tiktok.com/@horrorfreakspodcast" target="_blank" rel="noopener">
+          <span class="label">TikTok</span><strong>@horrorfreakspodcast</strong><span class="go">Follow on TikTok →</span>
+        </a>
       </div>
       <div class="listen-grid">
         <a class="platform social" href="https://open.spotify.com/show/2ww5Wgex3Wu4OhzLSIJfHm" target="_blank" rel="noopener"><span class="label">Listen now</span><strong>Spotify</strong><span class="go">Listen on Spotify →</span></a>
@@ -992,7 +997,7 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
 <footer>
   <div class="wrap">
     <span class="fm">Horror Freaks</span>
-    <span class="label">Sponsored by <a href="https://www.dubby.gg" target="_blank" rel="noopener sponsored">Dubby.gg</a> (code STAB) · <a href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">Facebook</a> · Big J Millz &amp; J-Rod · NSFW: Not Safe For Wimps · Be kind, rewind</span>
+    <span class="label">Sponsored by <a href="https://www.dubby.gg" target="_blank" rel="noopener sponsored">Dubby.gg</a> (code STAB) · <a href="https://www.instagram.com/horrorfreakspod/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61596404872758" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.tiktok.com/@horrorfreakspodcast" target="_blank" rel="noopener">TikTok</a> · Big J Millz &amp; J-Rod · NSFW: Not Safe For Wimps · Be kind, rewind</span>
   </div>
 </footer>
 
