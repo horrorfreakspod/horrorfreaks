@@ -266,6 +266,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tape.cover > .out-now.stamp-corpse { font-size: clamp(1.6rem, 2.6vw, 1.95rem); }
 @media (max-width: 600px) { .feature.corpse .tape.cover > .out-now.stamp-corpse { font-size: 1.25rem; bottom: 14px; left: auto; right: 22px; transform-origin: right bottom; } }
 .feature.corpse .drops { background: #f0953a; color: #1a0c03; box-shadow: 3px 3px 0 #5a2606, 0 0 18px rgba(240,149,58,0.4); }
+.feature.gremlin { border-color: #1f8a7c; }
+.feature.gremlin .tape.next { border-right: 1px solid #154a44; }
+.feature.gremlin .now-head { color: #4fd8c4; }
+.out-now.stamp-gremlin { color: #4fd8c4; border-color: #4fd8c4; outline-color: #4fd8c4; text-shadow: 0 0 1px #4fd8c4, 0 0 10px rgba(79,216,196,0.5); }
+.feature.gremlin .tape.cover .t { text-shadow: 3px 3px 0 #063a35, 0 0 16px rgba(43,181,163,0.55), 0 2px 10px rgba(0,0,0,0.85); }
+.feature.gremlin .drops { background: #4fd8c4; color: #03211d; box-shadow: 3px 3px 0 #063a35, 0 0 18px rgba(79,216,196,0.4); }
 .tape.mystery { border-style: dashed; border-color: #6b3a8a; }
 .tape.mystery .t { font-family: var(--f-display); font-weight: 400; font-size: 2.6rem; color: #d9b8ff; letter-spacing: 0.12em; text-shadow: 0 0 6px #b06cff, 0 0 18px rgba(176,108,255,0.6), 2px 2px 0 #1a0826; animation: mystery-pulse 3.2s ease-in-out infinite; }
 .tape.mystery .t small { font-family: var(--f-mono, monospace); color: #b9a3cc; text-shadow: none; letter-spacing: 0.04em; }
@@ -934,13 +940,39 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
             </dl>
           </div>
         </article>
+        <article class="feature gremlin">
+          <div class="tape next cover">
+            <canvas class="splat" id="splat-04" data-palette="gremlin" data-seed="1984" aria-hidden="true"></canvas>
+            <span class="ep">Episode 04</span>
+            <span class="t">Gremlins<small>1984 · Joe Dante</small></span>
+            <span class="out-now stamp-gremlin">Up<br>next!!</span>
+          </div>
+          <div class="feat-info">
+            <span class="label now-head">Coming next</span>
+            <span class="drops">Drops <time datetime="2026-11-30">11/30/26</time></span>
+            <div class="ep-btns"><a class="btn listen-ep" href="#listen">Listen anywhere&nbsp;↓</a><button type="button" class="btn ghost trailer-btn" data-yt="XBEVwaJEgaA" data-title="Gremlins (1984)">▶&nbsp;Watch trailer</button></div>
+            <dl>
+              <div class="frow"><dt>Running time</dt><dd>106 min</dd></div>
+              <div class="frow"><dt>Rated</dt><dd><span class="rating">PG</span> Rated PG</dd></div>
+              <div class="frow"><dt>Directed by</dt><dd>Joe Dante</dd></div>
+              <div class="frow"><dt>Cast</dt><dd class="cast">
+                <span>Zach Galligan <em>as Billy Peltzer</em></span>
+                <span>Phoebe Cates <em>as Kate Beringer</em></span>
+                <span>Hoyt Axton <em>as Rand Peltzer</em></span>
+                <span>Frances Lee McCain <em>as Lynn Peltzer</em></span>
+                <span>Polly Holliday <em>as Ruby Deagle</em></span>
+                <span>Howie Mandel <em>as the voice of Gizmo</em></span>
+              </dd></div>
+            </dl>
+          </div>
+        </article>
         <div class="tape mystery">
-          <span class="ep">Episode 04</span>
-          <span class="t">???<small>Up next · Drops Mon 11/30/26</small></span>
-          <span class="sticker tag">Up next</span>
+          <span class="ep">Episode 05</span>
+          <span class="t">???<small>Drops Mon 12/7/26</small></span>
+          <span class="sticker tag">Coming soon</span>
         </div>
         <div class="tape">
-          <span class="ep">Episode 05</span>
+          <span class="ep">Episode 06</span>
           <span class="t">Movie title<small>To be announced</small></span>
           <span class="sticker tag dim">Reserved</span>
         </div>
@@ -1093,7 +1125,8 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
   var PAL = {
     blood: { ink: ['#7d0f0b', '#9e1b16', '#5c0906'], light: '#3b3532', glow: null },
     toxic: { ink: ['#4c8a0e', '#86d61f', '#2d5507'], light: '#26301c', glow: 'rgba(134,214,31,0.28)', bubble: '160,235,60' },
-    corpse: { ink: ['#8a3b0a', '#e07b22', '#5a2606'], light: '#33231a', glow: 'rgba(224,123,34,0.26)', bubble: '245,160,80' }
+    corpse: { ink: ['#8a3b0a', '#e07b22', '#5a2606'], light: '#33231a', glow: 'rgba(224,123,34,0.26)', bubble: '245,160,80' },
+    gremlin: { ink: ['#0e5a52', '#2bb5a3', '#063a35'], light: '#16302d', glow: 'rgba(43,181,163,0.26)', bubble: '110,225,205' }
   };
   function paint(c) {
     var pal = PAL[c.getAttribute('data-palette')] || PAL.blood;
