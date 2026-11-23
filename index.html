@@ -376,6 +376,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 600px) {
   .feature { grid-template-columns: minmax(0, 1fr); }
   .feature .tape { aspect-ratio: 4 / 3; border-right: 0; border-bottom: 1px solid var(--line); }
+  .feature .tape.has-poster { aspect-ratio: 2 / 3; }
+  .feature.feature .tape.cover.has-poster > .out-now.out-now { bottom: 21%; }
 }
 .now-head { color: var(--sticker); }
 @media (max-width: 600px) { .spec .row { flex-direction: column; gap: 4px; } .spec .row dd { text-align: left; } }
@@ -497,6 +499,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tape.cover { position: relative; overflow: hidden; background: #0b0807; }
 .tape.cover > *:not(.splat) { position: relative; z-index: 1; }
 .tape.cover .splat { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.tape.cover > img.poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 0; display: block; }
+.tape.has-poster .ep { justify-self: start; background: rgba(8,5,4,0.82); color: var(--bone); padding: 4px 8px 3px; }
+.tape.has-poster > .t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tape.has-poster > .out-now:not(.neon) { background: rgba(8,5,4,0.55); }
 .tape.cover .t { font-size: 1.9rem; color: #f3ece0; text-shadow: 0 2px 10px rgba(0,0,0,0.85); }
 .tape.cover .t small { color: #d6cbb8; text-shadow: 0 1px 6px rgba(0,0,0,0.9); }
 .tape.next { border-color: var(--blood); background: linear-gradient(180deg, #3a1411, var(--sleeve)); }
@@ -866,8 +872,8 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
       </div>
       <div class="shelf">
         <article class="feature">
-          <div class="tape next cover">
-            <canvas class="splat" id="splat-01" aria-hidden="true"></canvas>
+          <div class="tape next cover has-poster">
+            <img class="poster" src="img/poster-terrifier.jpg" alt="Terrifier (2016) movie poster" width="600" height="900" loading="lazy" decoding="async">
             <span class="ep">Episode 01</span>
             <span class="t">Terrifier<small>2016</small></span>
             <span class="out-now">Out<br>now!!</span>
@@ -890,8 +896,8 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
           </div>
         </article>
         <article class="feature toxic">
-          <div class="tape next cover">
-            <canvas class="splat" id="splat-02" data-palette="toxic" data-seed="2025" aria-hidden="true"></canvas>
+          <div class="tape next cover has-poster">
+            <img class="poster" src="img/poster-toxic-avenger.jpg" alt="The Toxic Avenger (2025) movie poster" width="600" height="900" loading="lazy" decoding="async">
             <span class="ep">Episode 02</span>
             <span class="t">The Toxic Avenger<small>2025 · Macon Blair</small></span>
             <span class="out-now stamp-toxic">Out<br>now!!</span>
@@ -915,8 +921,8 @@ a, button, .platform.social, .deck { cursor: url("data:image/svg+xml,%3Csvg%20xm
           </div>
         </article>
         <article class="feature corpse">
-          <div class="tape next cover">
-            <canvas class="splat" id="splat-03" data-palette="corpse" data-seed="2003" aria-hidden="true"></canvas>
+          <div class="tape next cover has-poster">
+            <img class="poster" src="img/poster-house-of-1000-corpses.jpg" alt="House of 1000 Corpses (2003) movie poster" width="600" height="900" loading="lazy" decoding="async">
             <span class="ep">Episode 03</span>
             <span class="t">House of 1000 Corpses<small>2003 · Out 11/23/26</small></span>
             <span class="out-now stamp-corpse neon">Now<br>playing!!!</span>
